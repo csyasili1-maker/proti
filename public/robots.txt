@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://proitkeys.com/sitemap.xml

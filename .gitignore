@@ -1,0 +1,9 @@
+node_modules/
+out/
+dist/
+tmp/
+.env
+.env.*
+*.log
+logo-carousel-check.png
+.DS_Store

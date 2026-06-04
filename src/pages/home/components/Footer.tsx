@@ -1,0 +1,213 @@
+import { Link } from 'react-router-dom';
+
+export default function Footer() {
+  const footerLinks = {
+    company: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Our Services', href: '/services' },
+      { label: 'Career Placement', href: '/career-placement-support' },
+      { label: 'Corporate Training', href: '/corporate-training-solutions' },
+    ],
+    programs: [
+      { label: 'All Courses', href: '/courses' },
+      { label: 'AI Engineering', href: '/courses' },
+      { label: 'DevOps & Cloud', href: '/courses' },
+      { label: 'Data Science', href: '/courses' },
+      { label: 'Cybersecurity', href: '/courses' },
+    ],
+    support: [
+      { label: 'Contact Us', href: '/contact' },
+      { label: 'Book Consultation', href: 'https://wa.me/15313954129' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms & Conditions', href: '/terms-conditions' },
+    ],
+  };
+
+  return (
+    <footer className="w-full bg-dark text-white">
+      <div className="w-full px-6 lg:px-10 max-w-[1440px] mx-auto pt-16 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-12">
+          {/* Brand Column */}
+          <div className="lg:col-span-4">
+            <div className="flex items-center gap-2.5 mb-6">
+              <img
+                src="/images/brand/proitkeys-logo-footer.png"
+                alt="PROITKEYS"
+                width={112}
+                height={112}
+                loading="lazy"
+                className="h-28 w-auto object-contain"
+              />
+            </div>
+
+            <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-xs">
+              Building Careers. Transforming Futures. Industry-oriented IT training with structured career support for professionals in the United States.
+            </p>
+
+            <div className="space-y-3 mb-6">
+              <a
+                href="tel:+15313954129"
+                className="flex items-center gap-3 text-white/50 text-sm hover:text-brand transition-colors"
+              >
+                <i className="ri-phone-line text-brand" />
+                <span>(531) 395 4129</span>
+              </a>
+              <a
+                href="mailto:proitkeys@gmail.com"
+                className="flex items-center gap-3 text-white/50 text-sm hover:text-brand transition-colors"
+              >
+                <i className="ri-mail-line text-brand" />
+                <span>proitkeys@gmail.com</span>
+              </a>
+              <a
+                href="https://wa.me/15313954129"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-white/50 text-sm hover:text-brand transition-colors"
+              >
+                <i className="ri-whatsapp-line text-brand" />
+                <span>WhatsApp: (531) 395 4129</span>
+              </a>
+              <div className="flex items-center gap-3 text-white/50 text-sm">
+                <i className="ri-map-pin-line text-brand" />
+                <span>United States</span>
+              </div>
+            </div>
+
+            {/* Social */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://linkedin.com/company/proitkeys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-dark-lighter hover:bg-brand flex items-center justify-center transition-colors"
+                aria-label="LinkedIn"
+              >
+                <i className="ri-linkedin-fill text-sm" />
+              </a>
+              <a
+                href="https://facebook.com/proitkeys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-dark-lighter hover:bg-brand flex items-center justify-center transition-colors"
+                aria-label="Facebook"
+              >
+                <i className="ri-facebook-fill text-sm" />
+              </a>
+              <a
+                href="https://instagram.com/proitkeys"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-dark-lighter hover:bg-brand flex items-center justify-center transition-colors"
+                aria-label="Instagram"
+              >
+                <i className="ri-instagram-line text-sm" />
+              </a>
+              <a
+                href="https://youtube.com/@proitkeys3148"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg bg-dark-lighter hover:bg-brand flex items-center justify-center transition-colors"
+                aria-label="YouTube"
+              >
+                <i className="ri-youtube-fill text-sm" />
+              </a>
+            </div>
+          </div>
+
+          {/* Company */}
+          <div className="lg:col-span-2 lg:col-start-6">
+            <h4 className="font-semibold text-sm mb-5">Company</h4>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="text-white/50 text-sm hover:text-brand transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Programs */}
+          <div className="lg:col-span-2">
+            <h4 className="font-semibold text-sm mb-5">Programs</h4>
+            <ul className="space-y-3">
+              {footerLinks.programs.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="text-white/50 text-sm hover:text-brand transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div className="lg:col-span-2">
+            <h4 className="font-semibold text-sm mb-5">Support</h4>
+            <ul className="space-y-3">
+              {footerLinks.support.map((link) =>
+                link.href.startsWith('http') ? (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/50 text-sm hover:text-brand transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ) : (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      className="text-white/50 text-sm hover:text-brand transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+
+          {/* Call to Action */}
+          <div className="lg:col-span-2">
+            <h4 className="font-semibold text-sm mb-5">Ready to Start?</h4>
+            <p className="text-white/50 text-sm leading-relaxed mb-4">
+              Take the first step toward a career in technology. Our advisors are here to guide you.
+            </p>
+            <a
+              href="tel:+15313954129"
+              className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-5 py-3 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
+            >
+              <i className="ri-phone-line" />
+              Call (531) 395 4129
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-white/40 text-xs">
+            &copy; 2026 PROITKEYS. All Rights Reserved.
+          </p>
+          <div className="flex items-center gap-6 text-xs text-white/40">
+            <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms-conditions" className="hover:text-white transition-colors">Terms & Conditions</Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
