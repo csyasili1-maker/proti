@@ -14,6 +14,7 @@ import QATestingPage from "../pages/qa-testing/page";
 import CourseDetailPage from "../pages/course-detail/page";
 import PrivacyPolicyPage from "../pages/privacy-policy/page";
 import TermsConditionsPage from "../pages/terms-conditions/page";
+import CertificationsPage from "../pages/certifications/page";
 
 const routes: RouteObject[] = [
   {
@@ -53,6 +54,10 @@ const routes: RouteObject[] = [
     element: <ProgramsPage />,
   },
   {
+    path: "/certifications",
+    element: <CertificationsPage />,
+  },
+  {
     path: "/course/qa-testing",
     element: <QATestingPage />,
   },
@@ -67,6 +72,10 @@ const routes: RouteObject[] = [
   {
     path: "/terms-conditions",
     element: <TermsConditionsPage />,
+  },
+  {
+    path: "/blog",
+    element: <ComingSoon />,
   },
   {
     path: "*",

@@ -1,16 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
-
-  // Only use white logo on the Courses page
-  const isCoursesPage = location.pathname === '/courses';
-  const useWhiteLogo = isCoursesPage && !scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -32,23 +27,72 @@ export default function Navbar() {
     { label: 'Home', href: '/' },
     { label: 'Programs', href: '/programs' },
     { label: 'Courses', href: '/courses' },
+    { label: 'Certifications', href: '/certifications' },
     { label: 'Services', href: '/services', isDropdown: true },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
   ];
 
+  const contactItems = [
+    {
+      label: '+1 (531) 395 4129',
+      href: 'tel:+15313954129',
+      icon: 'ri-phone-line',
+    },
+    {
+      label: 'proitkeys@gmail.com',
+      href: 'mailto:proitkeys@gmail.com',
+      icon: 'ri-mail-line',
+    },
+    {
+      label: 'United States',
+      icon: 'ri-map-pin-line',
+    },
+  ];
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-sm shadow-sm'
-          : isCoursesPage
-            ? 'bg-transparent'
-            : 'bg-white/95 backdrop-blur-sm'
+      className={`fixed top-0 left-0 right-0 z-50 bg-[#c81919] text-white transition-all duration-300 ${
+        scrolled ? 'shadow-md' : 'shadow-sm'
       }`}
     >
       <div className="w-full px-6 lg:px-10">
-        <nav className="flex items-center justify-between h-24">
+        <div className="hidden md:flex items-center justify-between h-8 border-b border-white/15">
+          <div className="flex items-center gap-5 min-w-0">
+            {contactItems.map((item) =>
+              item.href ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-white/85 transition-colors hover:text-white whitespace-nowrap"
+                >
+                  <i className={`${item.icon} text-sm`} />
+                  <span>{item.label}</span>
+                </a>
+              ) : (
+                <div
+                  key={item.label}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-white/85 whitespace-nowrap"
+                >
+                  <i className={`${item.icon} text-sm`} />
+                  <span>{item.label}</span>
+                </div>
+              )
+            )}
+          </div>
+
+          <a
+            href="https://wa.me/15313954129"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white transition-colors hover:text-white/80 whitespace-nowrap"
+          >
+            <i className="ri-whatsapp-line text-sm" />
+            WhatsApp Support
+          </a>
+        </div>
+
+        <nav className="flex items-center justify-between h-20 md:h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5">
             <img
@@ -58,7 +102,7 @@ export default function Navbar() {
               height={96}
               loading="eager"
               fetchPriority="high"
-              className={`h-20 w-auto object-contain transition-all duration-300 ${useWhiteLogo ? 'brightness-0 invert' : ''}`}
+              className="h-16 md:h-14 w-auto object-contain brightness-0 invert transition-all duration-300"
             />
           </Link>
 
@@ -66,21 +110,36 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) =>
               link.isDropdown ? (
-                <div key={link.label} className="relative" ref={dropdownRef}>
+                <div key={link.label} className="group relative" ref={dropdownRef}>
                   <button
-                    onClick={() => setServicesOpen(!servicesOpen)}
-                    className={`flex items-center gap-1.5 text-sm font-medium transition-colors whitespace-nowrap ${
-                      scrolled || !isCoursesPage
-                        ? 'text-dark/80 hover:text-brand'
-                        : 'text-white/90 hover:text-white'
-                    }`}
+                    type="button"
+                    aria-expanded={servicesOpen}
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setServicesOpen((open) => !open);
+                    }}
+                    className="flex items-center gap-1.5 text-sm font-medium text-white/90 transition-colors hover:text-white whitespace-nowrap"
                   >
                     {link.label}
                     <i className={`ri-arrow-down-s-line text-xs transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
                   </button>
 
-                  {servicesOpen && (
-                    <div className="absolute top-full mt-2 left-0 bg-white rounded-xl shadow-lg border border-gray-100 py-2 min-w-[240px] z-50">
+                  <div
+                    className={`absolute top-full mt-2 left-0 bg-white rounded-xl shadow-lg border border-gray-100 py-2 min-w-[240px] z-50 ${
+                      servicesOpen ? 'block' : 'hidden'
+                    } group-hover:block group-focus-within:block`}
+                  >
+                    <Link
+                      to="/services"
+                      onClick={() => setServicesOpen(false)}
+                      className="block px-5 py-3 text-sm text-dark/70 hover:text-brand hover:bg-brand/5 transition-colors whitespace-nowrap"
+                    >
+                      <div className="flex items-center gap-2">
+                        <i className="ri-service-line text-brand" />
+                        <span>All Services</span>
+                      </div>
+                    </Link>
                       <Link
                         to="/career-success-services"
                         onClick={() => setServicesOpen(false)}
@@ -111,18 +170,13 @@ export default function Navbar() {
                           <span>Corporate Training Solutions</span>
                         </div>
                       </Link>
-                    </div>
-                  )}
+                  </div>
                 </div>
               ) : (
                 <Link
                   key={link.label}
                   to={link.href}
-                  className={`text-sm font-medium transition-colors whitespace-nowrap ${
-                    scrolled || !isCoursesPage
-                      ? 'text-dark/80 hover:text-brand'
-                      : 'text-white/90 hover:text-white'
-                  }`}
+                  className="text-sm font-medium text-white/90 transition-colors hover:text-white whitespace-nowrap"
                 >
                   {link.label}
                 </Link>
@@ -132,20 +186,31 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="hidden lg:flex items-center gap-4">
-            <button className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${scrolled || !isCoursesPage ? 'bg-light hover:bg-gray-200' : 'bg-white/15 hover:bg-white/25 backdrop-blur-sm'}`}>
-              <i className={`ri-search-line ${scrolled || !isCoursesPage ? 'text-dark/70' : 'text-white/90'}`} />
+            <button
+              type="button"
+              aria-label="Search"
+              className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center backdrop-blur-sm transition-colors hover:bg-white/25"
+            >
+              <i className="ri-search-line text-white/90" />
             </button>
-            <button className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${scrolled || !isCoursesPage ? 'bg-light hover:bg-gray-200' : 'bg-white/15 hover:bg-white/25 backdrop-blur-sm'}`}>
-              <i className={`ri-notification-3-line ${scrolled || !isCoursesPage ? 'text-dark/70' : 'text-white/90'}`} />
+            <button
+              type="button"
+              aria-label="Notifications"
+              className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center backdrop-blur-sm transition-colors hover:bg-white/25"
+            >
+              <i className="ri-notification-3-line text-white/90" />
             </button>
           </div>
 
           {/* Mobile Toggle */}
           <button
+            type="button"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
             className="lg:hidden w-10 h-10 flex items-center justify-center"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            <i className={`ri-${mobileOpen ? 'close-line' : 'menu-line'} text-2xl text-dark`} />
+            <i className={`ri-${mobileOpen ? 'close-line' : 'menu-line'} text-2xl text-white`} />
           </button>
         </nav>
       </div>
@@ -153,6 +218,27 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="lg:hidden bg-white border-t border-gray-100 px-6 py-6">
+          <div className="grid gap-2 mb-5 pb-5 border-b border-gray-100">
+            {contactItems.map((item) =>
+              item.href ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="flex items-center gap-3 text-dark/70 hover:text-brand font-medium text-sm py-2"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <i className={`${item.icon} text-brand text-base`} />
+                  <span>{item.label}</span>
+                </a>
+              ) : (
+                <div key={item.label} className="flex items-center gap-3 text-dark/70 font-medium text-sm py-2">
+                  <i className={`${item.icon} text-brand text-base`} />
+                  <span>{item.label}</span>
+                </div>
+              )
+            )}
+          </div>
+
           <div className="flex flex-col gap-2">
             {navLinks.map((link) =>
               link.isDropdown ? (

@@ -7,9 +7,11 @@ export default function Footer() {
       { label: 'Our Services', href: '/services' },
       { label: 'Career Placement', href: '/career-placement-support' },
       { label: 'Corporate Training', href: '/corporate-training-solutions' },
+      { label: 'Certifications', href: '/certifications' },
     ],
     programs: [
       { label: 'All Courses', href: '/courses' },
+      { label: 'Certification Assistance', href: '/certifications' },
       { label: 'AI Engineering', href: '/courses' },
       { label: 'DevOps & Cloud', href: '/courses' },
       { label: 'Data Science', href: '/courses' },
