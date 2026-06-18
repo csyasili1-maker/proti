@@ -96,7 +96,7 @@ export default function EnquiryForm() {
                 </div>
                 <div>
                   <p className="text-sm text-dark/50">Address</p>
-                  <p className="font-semibold text-dark text-sm">Hyderabad, Telangana, India</p>
+                  <p className="font-semibold text-dark text-sm">United States</p>
                 </div>
               </div>
             </div>

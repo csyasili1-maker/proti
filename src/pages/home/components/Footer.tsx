@@ -61,7 +61,7 @@ export default function Footer() {
                 className="flex items-center gap-3 text-white/50 text-sm hover:text-brand transition-colors"
               >
                 <i className="ri-phone-line text-brand" />
-                <span>India: {indiaPhoneNumber.display}</span>
+                <span>WhatsApp / Call: {indiaPhoneNumber.display}</span>
               </a>
               <a
                 href="mailto:proitkeys@gmail.com"

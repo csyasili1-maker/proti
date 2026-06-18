@@ -121,7 +121,7 @@ export default function ComingSoon() {
       {/* Footer */}
       <footer className="w-full px-6 py-6 text-center border-t border-gray-100">
         <p className="text-dark/30 text-xs">
-          &copy; 2026 PROITKEYS. All Rights Reserved. | Hyderabad, Telangana, India
+          &copy; 2026 PROITKEYS. All Rights Reserved. | United States
         </p>
       </footer>
     </div>

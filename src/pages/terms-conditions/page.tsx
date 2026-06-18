@@ -64,7 +64,7 @@ export default function TermsConditionsPage() {
               </p>
               <ul className="list-disc pl-5 space-y-2 leading-relaxed">
                 <li>All payments must be made in full at the time of registration unless a payment plan has been explicitly agreed upon in writing.</li>
-                <li>Prices are listed in Indian Rupees (INR) unless otherwise stated, and you are responsible for any applicable taxes, duties, or transaction fees.</li>
+                <li>Prices are listed in US Dollars (USD) unless otherwise stated, and you are responsible for any applicable taxes, duties, or transaction fees.</li>
                 <li>We use third-party payment processors to handle transactions. We do not store your full payment card details on our servers.</li>
                 <li>PROITKEYS reserves the right to modify pricing at any time. Existing enrolments will not be affected by price changes.</li>
               </ul>
@@ -166,7 +166,7 @@ export default function TermsConditionsPage() {
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-3">13. Governing Law and Disputes</h2>
               <p className="leading-relaxed">
-                These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law principles. Any dispute arising out of or relating to these Terms or the Services shall be subject to the exclusive jurisdiction of the courts located in Hyderabad, Telangana, India.
+                These Terms shall be governed by and construed in accordance with applicable laws in the United States, without regard to conflict of law principles. Any dispute arising out of or relating to these Terms or the Services shall be handled in the United States.
               </p>
               <p className="leading-relaxed mt-3">
                 Before initiating formal legal proceedings, you agree to first attempt to resolve any dispute informally by contacting us at proitkeys@gmail.com. We will make reasonable efforts to resolve the dispute within 30 days.
@@ -190,7 +190,7 @@ export default function TermsConditionsPage() {
               <ul className="list-none space-y-2 leading-relaxed">
                 <li><strong>Email:</strong> proitkeys@gmail.com</li>
                 <li><strong>Phone (US):</strong> +1 (531) 395 4129</li>
-                <li><strong>Phone (India):</strong> +91 94928 76779</li>
+                <li><strong>Phone / WhatsApp:</strong> +91 94928 76779</li>
                 <li><strong>WhatsApp:</strong> +91 94928 76779</li>
                 <li><strong>Website:</strong> Visit our <Link to="/contact" className="text-[#f15a24] hover:underline">contact page</Link></li>
               </ul>
