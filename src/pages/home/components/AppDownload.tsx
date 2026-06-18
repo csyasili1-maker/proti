@@ -34,11 +34,11 @@ export default function AppDownload() {
           <div className="max-w-3xl">
             <span className="text-sm font-semibold text-brand uppercase tracking-wider">Featured Courses</span>
             <h2 className="text-3xl md:text-4xl font-bold font-display mt-2 text-dark">
-              SAP <span className="text-brand">Professional Programs</span>
+              Future-Ready Tech Career Programs
             </h2>
           </div>
           <p className="text-dark/60 text-sm md:text-base max-w-xl">
-            Career-focused full stack and SAP AI programs with live training, practical projects, and placement-focused career support.
+            Master Full Stack Development, AI & Machine Learning, Data Analytics, and Cloud Technologies through live instructor-led training, hands-on projects, industry mentorship, and placement-focused career support.
           </p>
         </div>
 
