@@ -1,20 +1,23 @@
+import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
-import NotFound from "../pages/NotFound";
-import Home from "../pages/home/page";
-import ServicesPage from "../pages/services/page";
-import CareerSuccessServicesPage from "../pages/career-success-services/page";
-import CareerPlacementSupportPage from "../pages/career-placement-support/page";
-import CorporateTrainingSolutionsPage from "../pages/corporate-training-solutions/page";
-import CoursesPage from "../pages/courses/page";
-import ComingSoon from "../pages/ComingSoon/page";
-import AboutPage from "../pages/about/page";
-import ContactPage from "../pages/contact/page";
-import ProgramsPage from "../pages/programs/page";
-import QATestingPage from "../pages/qa-testing/page";
-import CourseDetailPage from "../pages/course-detail/page";
-import PrivacyPolicyPage from "../pages/privacy-policy/page";
-import TermsConditionsPage from "../pages/terms-conditions/page";
-import CertificationsPage from "../pages/certifications/page";
+
+const NotFound = lazy(() => import("../pages/NotFound"));
+const Home = lazy(() => import("../pages/home/page"));
+const ServicesPage = lazy(() => import("../pages/services/page"));
+const CareerSuccessServicesPage = lazy(() => import("../pages/career-success-services/page"));
+const CareerPlacementSupportPage = lazy(() => import("../pages/career-placement-support/page"));
+const CorporateTrainingSolutionsPage = lazy(() => import("../pages/corporate-training-solutions/page"));
+const CoursesPage = lazy(() => import("../pages/courses/page"));
+const AboutPage = lazy(() => import("../pages/about/page"));
+const ContactPage = lazy(() => import("../pages/contact/page"));
+const ProgramsPage = lazy(() => import("../pages/programs/page"));
+const QATestingPage = lazy(() => import("../pages/qa-testing/page"));
+const CourseDetailPage = lazy(() => import("../pages/course-detail/page"));
+const BlogPage = lazy(() => import("../pages/blog/page"));
+const BlogDetailPage = lazy(() => import("../pages/blog/detail"));
+const PrivacyPolicyPage = lazy(() => import("../pages/privacy-policy/page"));
+const TermsConditionsPage = lazy(() => import("../pages/terms-conditions/page"));
+const CertificationsPage = lazy(() => import("../pages/certifications/page"));
 
 const routes: RouteObject[] = [
   {
@@ -75,7 +78,11 @@ const routes: RouteObject[] = [
   },
   {
     path: "/blog",
-    element: <ComingSoon />,
+    element: <BlogPage />,
+  },
+  {
+    path: "/blog/:slug",
+    element: <BlogDetailPage />,
   },
   {
     path: "*",

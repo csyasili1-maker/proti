@@ -25,7 +25,7 @@ const pageInfo: Record<string, { title: string; icon: string; description: strin
   '/contact': {
     title: 'Contact Us',
     icon: 'ri-customer-service-2-line',
-    description: 'Our comprehensive contact and support page is being finalized. In the meantime, reach us at proitkeys@gmail.com or (531) 395 4129.',
+    description: 'Our comprehensive contact and support page is being finalized. In the meantime, reach us at proitkeys@gmail.com, +1 (531) 395 4129, or +91 94928 76779.',
   },
 };
 

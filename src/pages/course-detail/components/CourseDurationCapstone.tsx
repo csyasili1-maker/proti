@@ -5,6 +5,15 @@ interface CourseDurationCapstoneProps {
 }
 
 export default function CourseDurationCapstone({ course }: CourseDurationCapstoneProps) {
+  const capstoneItems = course.capstoneProjects && course.capstoneProjects.length > 0
+    ? course.capstoneProjects.slice(0, 4)
+    : [
+        'End-to-end project implementation',
+        'Requirement analysis and planning',
+        'Documentation and delivery',
+        'Final portfolio presentation',
+      ];
+
   return (
     <section className="w-full py-16 md:py-24 bg-white">
       <div className="w-full px-6 lg:px-10 max-w-[1440px] mx-auto">
@@ -48,22 +57,12 @@ export default function CourseDurationCapstone({ course }: CourseDurationCapston
               You will complete a real-world {course.category} project from planning to execution. This project becomes a powerful addition to your portfolio and helps you stand out during interviews with potential employers.
             </p>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2 text-white/70 text-sm">
-                <i className="ri-check-line text-brand-light flex-shrink-0" />
-                End-to-end project implementation
-              </li>
-              <li className="flex items-center gap-2 text-white/70 text-sm">
-                <i className="ri-check-line text-brand-light flex-shrink-0" />
-                Requirement analysis and planning
-              </li>
-              <li className="flex items-center gap-2 text-white/70 text-sm">
-                <i className="ri-check-line text-brand-light flex-shrink-0" />
-                Documentation and delivery
-              </li>
-              <li className="flex items-center gap-2 text-white/70 text-sm">
-                <i className="ri-check-line text-brand-light flex-shrink-0" />
-                Final portfolio presentation
-              </li>
+              {capstoneItems.map((item) => (
+                <li key={item} className="flex items-center gap-2 text-white/70 text-sm">
+                  <i className="ri-check-line text-brand-light flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

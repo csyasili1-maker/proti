@@ -28,7 +28,9 @@ const categoryAccent: Record<string, string> = {
 
 const levelColors: Record<string, string> = {
   'Beginner': 'bg-green-100 text-green-700',
+  'Beginner to Intermediate': 'bg-teal-100 text-teal-700',
   'Intermediate': 'bg-amber-100 text-amber-700',
+  'Intermediate to Advanced': 'bg-orange-100 text-orange-700',
   'Advanced': 'bg-rose-100 text-rose-700',
 };
 

@@ -30,7 +30,7 @@ export default function ProgramHero() {
                 <i className="ri-arrow-right-line" />
               </Link>
               <a
-                href="https://wa.me/15313954129"
+                href="https://wa.me/919492876779"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-brand text-dark hover:text-brand px-8 py-4 rounded-full text-sm font-semibold transition-all whitespace-nowrap"

@@ -21,7 +21,7 @@ export default function CoursesCTA() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I'd%20like%20help%20finding%20the%20right%20IT%20course%20for%20my%20career%20goals."
+              href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I'd%20like%20help%20finding%20the%20right%20IT%20course%20for%20my%20career%20goals."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-xl text-base font-bold transition-all whitespace-nowrap hover:scale-105"
@@ -30,11 +30,11 @@ export default function CoursesCTA() {
               Chat on WhatsApp
             </a>
             <a
-              href="tel:+15313954129"
+              href="tel:+919492876779"
               className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl text-base font-semibold transition-all whitespace-nowrap border border-white/15"
             >
               <i className="ri-phone-line" />
-              Call (531) 395 4129
+              Call +91 94928 76779
             </a>
           </div>
         </div>

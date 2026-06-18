@@ -16,7 +16,7 @@ export default function ServicesCTA() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I'd%20like%20to%20book%20a%20free%20career%20consultation."
+                href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I'd%20like%20to%20book%20a%20free%20career%20consultation."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white text-brand px-8 py-4 rounded-full text-sm font-semibold hover:bg-white/90 transition-colors whitespace-nowrap"
@@ -25,7 +25,7 @@ export default function ServicesCTA() {
                 <i className="ri-whatsapp-line" />
               </a>
               <a
-                href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I'd%20like%20to%20talk%20to%20a%20career%20advisor."
+                href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I'd%20like%20to%20talk%20to%20a%20career%20advisor."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-brand-red text-white px-8 py-4 rounded-full text-sm font-semibold hover:opacity-90 transition-colors whitespace-nowrap border border-white/20"

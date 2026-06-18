@@ -1,8 +1,10 @@
+import { getWhatsAppUrl, indiaPhoneNumber } from '@/config/contact';
+
 export default function FloatingContactButtons() {
   return (
     <div className="fixed bottom-20 md:bottom-8 right-4 md:right-6 z-40 flex flex-col gap-3">
       <a
-        href="tel:+15313954129"
+        href={`tel:${indiaPhoneNumber.tel}`}
         className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-brand hover:bg-brand-dark text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all group"
         aria-label="Call Now"
       >
@@ -13,7 +15,7 @@ export default function FloatingContactButtons() {
       </a>
 
       <a
-        href="https://wa.me/15313954129"
+        href={getWhatsAppUrl()}
         target="_blank"
         rel="noopener noreferrer"
         className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-green-600 hover:bg-green-700 text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all group"

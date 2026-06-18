@@ -33,6 +33,12 @@ export default function CourseDescription({ course }: CourseDescriptionProps) {
     : course.level === 'Intermediate'
     ? 'from working knowledge to confident implementation'
     : 'from advanced concepts to architecture-level decision making';
+  const descriptionParagraphs = course.detailDescription && course.detailDescription.length > 0
+    ? course.detailDescription
+    : [
+        `The ${course.title} program is built for learners who want practical, job-ready capability in ${course.category}. Over ${course.duration} weeks, the course takes you ${levelPhrase} through live instruction, guided labs, tool-based exercises, and project work tied to real IT delivery scenarios.`,
+        `You will practice the workflows, terminology, troubleshooting patterns, and interview-ready skills expected from professionals working with ${course.title}. The focus stays on usable knowledge: what to configure, what to build, what to monitor, and how to explain your decisions in a hiring conversation.`,
+      ];
 
   return (
     <section className="w-full py-16 md:py-24 bg-white">
@@ -58,13 +64,14 @@ export default function CourseDescription({ course }: CourseDescriptionProps) {
               Immersive Training That <span className="text-brand">Prepares You for Real Work</span>
             </h2>
 
-            <p className="text-dark/60 text-base leading-relaxed mb-4">
-              The {course.title} program is built for learners who want practical, job-ready capability in {course.category}. Over {course.duration} weeks, the course takes you {levelPhrase} through live instruction, guided labs, tool-based exercises, and project work tied to real IT delivery scenarios.
-            </p>
-
-            <p className="text-dark/60 text-base leading-relaxed mb-6">
-              You will practice the workflows, terminology, troubleshooting patterns, and interview-ready skills expected from professionals working with {course.title}. The focus stays on usable knowledge: what to configure, what to build, what to monitor, and how to explain your decisions in a hiring conversation.
-            </p>
+            {descriptionParagraphs.map((paragraph, index) => (
+              <p
+                key={index}
+                className={`text-dark/60 text-base leading-relaxed ${index === descriptionParagraphs.length - 1 ? 'mb-6' : 'mb-4'}`}
+              >
+                {paragraph}
+              </p>
+            ))}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
               {features.map((item, i) => (
@@ -76,7 +83,7 @@ export default function CourseDescription({ course }: CourseDescriptionProps) {
             </div>
 
             <a
-              href={`https://wa.me/15313954129?text=${getWhatsAppMessage(course)}`}
+              href={`https://wa.me/919492876779?text=${getWhatsAppMessage(course)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"

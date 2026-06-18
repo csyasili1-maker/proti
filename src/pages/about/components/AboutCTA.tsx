@@ -32,7 +32,7 @@ export default function AboutCTA() {
                 <i className="ri-arrow-right-line" />
               </Link>
               <a
-                href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I'd%20like%20to%20book%20a%20free%20career%20consultation."
+                href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I'd%20like%20to%20book%20a%20free%20career%20consultation."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 text-white px-8 py-4 rounded-full text-sm font-semibold transition-all whitespace-nowrap"

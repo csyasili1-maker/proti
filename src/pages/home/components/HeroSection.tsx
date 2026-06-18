@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { services } from '@/mocks/homeData';
-import { courses } from '@/mocks/coursesData';
 import type { Course } from '@/mocks/coursesData';
 import OptimizedImage from '@/components/base/OptimizedImage';
+import { searchCourses } from '@/utils/courseSearch';
 
 const trendingSearches = [
   { label: 'AWS', icon: 'ri-cloud-line' },
@@ -25,9 +25,11 @@ export default function HeroSection() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const resultItemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const searchRequestRef = useRef(0);
 
   const filterCourses = useCallback((query: string) => {
     if (!query.trim()) {
+      searchRequestRef.current += 1;
       setResults([]);
       setShowDropdown(false);
       setIsLoading(false);
@@ -37,21 +39,25 @@ export default function HeroSection() {
     // Simulate API loading for skeleton demo
     setIsLoading(true);
     if (debounceRef.current) clearTimeout(debounceRef.current);
+    const requestId = searchRequestRef.current + 1;
+    searchRequestRef.current = requestId;
 
     debounceRef.current = setTimeout(() => {
-      const q = query.toLowerCase().trim();
-      const matched = courses
-        .filter(
-          (c) =>
-            c.title.toLowerCase().includes(q) ||
-            c.category.toLowerCase().includes(q) ||
-            c.description.toLowerCase().includes(q),
-        )
-        .slice(0, 8);
-      setResults(matched);
-      setShowDropdown(matched.length > 0);
-      setHighlightedIndex(-1);
-      setIsLoading(false);
+      searchCourses(query, 8)
+        .then((matched) => {
+          if (requestId !== searchRequestRef.current) return;
+          setResults(matched);
+          setShowDropdown(matched.length > 0);
+          setHighlightedIndex(-1);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          if (requestId !== searchRequestRef.current) return;
+          setResults([]);
+          setShowDropdown(false);
+          setHighlightedIndex(-1);
+          setIsLoading(false);
+        });
     }, 350);
   }, []);
 
@@ -77,7 +83,7 @@ export default function HeroSection() {
 
   const openCourse = (slug: string) => {
     handleResultClick();
-    window.location.assign(`/courses/${slug}`);
+    navigate(`/courses/${slug}`);
   };
 
   const handleTrendingClick = (term: string) => {

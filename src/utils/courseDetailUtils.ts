@@ -37,6 +37,10 @@ export function generateHighlights(course: Course) {
 
 // ─── Features Generator ──────────────────────────────────
 export function generateFeatures(course: Course): string[] {
+  if (course.outcomes && course.outcomes.length > 0) {
+    return course.outcomes;
+  }
+
   const baseFeatures = [
     'Trainer-led live interactive sessions',
     'Real-time project work & hands-on labs',
@@ -63,6 +67,16 @@ export function generateFeatures(course: Course): string[] {
 
 // ─── Curriculum Modules Generator ────────────────────────
 export function generateCurriculumModules(course: Course): { title: string; icon: string; topics: string[] }[] {
+  if (course.curriculumModules && course.curriculumModules.length > 0) {
+    const fallbackIcons = ['ri-book-open-line', 'ri-tools-line', 'ri-terminal-box-line', 'ri-settings-3-line', 'ri-trophy-line'];
+
+    return course.curriculumModules.map((module, index) => ({
+      title: module.title,
+      icon: module.icon || fallbackIcons[index % fallbackIcons.length],
+      topics: module.topics,
+    }));
+  }
+
   if (course.curriculum && course.curriculum.length > 0) {
     const chunkSize = Math.ceil(course.curriculum.length / 4);
     const moduleNames = ['Foundations', 'Core Skills', 'Applied Practice', 'Capstone & Career Prep'];
@@ -198,6 +212,10 @@ export function generateTargetAudience(course: Course): string[] {
 
 // ─── Job Roles Generator ─────────────────────────────────
 export function generateJobRoles(course: Course): string[] {
+  if (course.jobRoles && course.jobRoles.length > 0) {
+    return course.jobRoles;
+  }
+
   const categoryRoles: Record<string, string[]> = {
     'Cloud Computing': ['Cloud Architect', 'Cloud Engineer', 'Solutions Architect', 'Cloud Administrator', 'DevOps Cloud Engineer', 'Cloud Consultant'],
     'Cybersecurity': ['Security Analyst', 'Penetration Tester', 'Security Engineer', 'SOC Analyst', 'Information Security Officer', 'Compliance Analyst'],
@@ -233,6 +251,10 @@ export function generateHiringCompanies(course: Course): string[] {
 
 // ─── Salary Data Generator ────────────────────────────────
 export function generateSalaryData(course: Course): { level: string; range: string }[] {
+  if (course.salaryData && course.salaryData.length > 0) {
+    return course.salaryData;
+  }
+
   const entrySuffix = course.category.includes('Cloud') || course.category.includes('AI') || course.category.includes('Cyber')
     ? '$75,000 – $95,000 / year'
     : course.category.includes('SAP') || course.category.includes('ERP')
@@ -260,6 +282,10 @@ export function generateSalaryData(course: Course): { level: string; range: stri
 
 // ─── FAQ Generator ────────────────────────────────────────
 export function generateFaqs(course: Course): { q: string; a: string }[] {
+  if (course.faqs && course.faqs.length > 0) {
+    return course.faqs;
+  }
+
   const baseFaqs = [
     {
       q: 'Do I need prior experience in this field?',

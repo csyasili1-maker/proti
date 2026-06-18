@@ -42,7 +42,7 @@ export default function ProgramDecisionStage() {
             </div>
 
             <a
-              href="https://wa.me/15313954129"
+              href="https://wa.me/919492876779"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"

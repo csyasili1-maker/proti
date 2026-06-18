@@ -16,7 +16,7 @@ export default function CTAAffordable() {
           </div>
           <div className="relative z-10 flex-shrink-0">
             <a
-              href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I'm%20interested%20in%20enrolling%20in%20your%20career-focused%20training%20programs.%20Please%20share%20more%20details."
+              href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I'm%20interested%20in%20enrolling%20in%20your%20career-focused%20training%20programs.%20Please%20share%20more%20details."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white text-teal-600 px-7 py-3.5 rounded-full text-sm font-semibold hover:bg-white/90 transition-colors whitespace-nowrap"

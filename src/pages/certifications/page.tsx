@@ -202,7 +202,7 @@ export default function CertificationsPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a
-                    href="https://wa.me/15313954129"
+                    href="https://wa.me/919492876779"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white px-7 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
@@ -211,11 +211,11 @@ export default function CertificationsPage() {
                     Start Certification Guidance
                   </a>
                   <a
-                    href="tel:+15313954129"
+                    href="tel:+919492876779"
                     className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 text-white px-7 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
                   >
                     <i className="ri-phone-line" />
-                    Call (531) 395 4129
+                    Call +91 94928 76779
                   </a>
                 </div>
               </div>
@@ -400,14 +400,14 @@ export default function CertificationsPage() {
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-3">
                 <a
-                  href="tel:+15313954129"
+                  href="tel:+919492876779"
                   className="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
                 >
                   <i className="ri-phone-line" />
-                  Call (531) 395 4129
+                  Call +91 94928 76779
                 </a>
                 <a
-                  href="https://wa.me/15313954129"
+                  href="https://wa.me/919492876779"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 text-white px-8 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"

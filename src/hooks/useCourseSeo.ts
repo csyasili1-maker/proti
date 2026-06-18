@@ -3,6 +3,7 @@ import type { Course } from '@/mocks/coursesData';
 
 const SITE_URL = 'https://proitkeys.com';
 const SITE_NAME = 'PROITKEYS';
+const SITE_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 function upsertMeta(selector: string, attrs: Record<string, string>) {
   let element = document.head.querySelector<HTMLMetaElement>(selector);
@@ -54,6 +55,7 @@ export function useCourseSeo(course?: Course) {
     const title = `${course.title} Course | ${course.category} Training | ${SITE_NAME}`;
     const description = getSeoDescription(course);
     const canonicalUrl = `${SITE_URL}/courses/${course.slug}`;
+    const courseImageUrl = course.image.startsWith('http') ? course.image : `${SITE_URL}${course.image}`;
 
     document.title = title;
 
@@ -63,11 +65,14 @@ export function useCourseSeo(course?: Course) {
     upsertMeta('meta[property="og:description"]', { property: 'og:description', content: description });
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
-    upsertMeta('meta[property="og:image"]', { property: 'og:image', content: course.image });
+    upsertMeta('meta[property="og:image"]', { property: 'og:image', content: SITE_OG_IMAGE });
+    upsertMeta('meta[property="og:image:width"]', { property: 'og:image:width', content: '1200' });
+    upsertMeta('meta[property="og:image:height"]', { property: 'og:image:height', content: '630' });
+    upsertMeta('meta[property="og:image:alt"]', { property: 'og:image:alt', content: 'PROITKEYS logo' });
     upsertMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary_large_image' });
     upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: title });
     upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: description });
-    upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: course.image });
+    upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: SITE_OG_IMAGE });
     upsertLink('link[rel="canonical"]', { rel: 'canonical', href: canonicalUrl });
 
     const jsonLd = {
@@ -78,7 +83,7 @@ export function useCourseSeo(course?: Course) {
           name: course.title,
           description,
           url: canonicalUrl,
-          image: course.image,
+          image: courseImageUrl,
           provider: {
             '@type': 'Organization',
             name: SITE_NAME,

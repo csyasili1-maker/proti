@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getWhatsAppUrl, indiaPhoneNumber, usPhoneNumber } from '@/config/contact';
 
 export default function Footer() {
   const footerLinks = {
@@ -19,7 +20,7 @@ export default function Footer() {
     ],
     support: [
       { label: 'Contact Us', href: '/contact' },
-      { label: 'Book Consultation', href: 'https://wa.me/15313954129' },
+      { label: 'Book Consultation', href: getWhatsAppUrl() },
       { label: 'Blog', href: '/blog' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms & Conditions', href: '/terms-conditions' },
@@ -29,12 +30,12 @@ export default function Footer() {
   return (
     <footer className="w-full bg-dark text-white">
       <div className="w-full px-6 lg:px-10 max-w-[1440px] mx-auto pt-16 pb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[minmax(220px,1.35fr)_minmax(100px,0.7fr)_minmax(130px,0.8fr)_minmax(130px,0.8fr)_minmax(160px,0.95fr)] gap-10 lg:gap-6 xl:gap-10 mb-12">
           {/* Brand Column */}
-          <div className="lg:col-span-4">
+          <div>
             <div className="flex items-center gap-2.5 mb-6">
               <img
-                src="/images/brand/proitkeys-logo-footer.png"
+                src="/images/brand/proitkeys-logo-footer-small.png"
                 alt="PROITKEYS"
                 width={112}
                 height={112}
@@ -49,11 +50,18 @@ export default function Footer() {
 
             <div className="space-y-3 mb-6">
               <a
-                href="tel:+15313954129"
+                href={`tel:${usPhoneNumber.tel}`}
                 className="flex items-center gap-3 text-white/50 text-sm hover:text-brand transition-colors"
               >
                 <i className="ri-phone-line text-brand" />
-                <span>(531) 395 4129</span>
+                <span>US: {usPhoneNumber.display}</span>
+              </a>
+              <a
+                href={`tel:${indiaPhoneNumber.tel}`}
+                className="flex items-center gap-3 text-white/50 text-sm hover:text-brand transition-colors"
+              >
+                <i className="ri-phone-line text-brand" />
+                <span>India: {indiaPhoneNumber.display}</span>
               </a>
               <a
                 href="mailto:proitkeys@gmail.com"
@@ -63,13 +71,13 @@ export default function Footer() {
                 <span>proitkeys@gmail.com</span>
               </a>
               <a
-                href="https://wa.me/15313954129"
+                href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-white/50 text-sm hover:text-brand transition-colors"
               >
                 <i className="ri-whatsapp-line text-brand" />
-                <span>WhatsApp: (531) 395 4129</span>
+                <span>WhatsApp: {indiaPhoneNumber.display}</span>
               </a>
               <div className="flex items-center gap-3 text-white/50 text-sm">
                 <i className="ri-map-pin-line text-brand" />
@@ -119,7 +127,7 @@ export default function Footer() {
           </div>
 
           {/* Company */}
-          <div className="lg:col-span-2 lg:col-start-6">
+          <div>
             <h4 className="font-semibold text-sm mb-5">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
@@ -136,7 +144,7 @@ export default function Footer() {
           </div>
 
           {/* Programs */}
-          <div className="lg:col-span-2">
+          <div>
             <h4 className="font-semibold text-sm mb-5">Programs</h4>
             <ul className="space-y-3">
               {footerLinks.programs.map((link) => (
@@ -153,7 +161,7 @@ export default function Footer() {
           </div>
 
           {/* Support */}
-          <div className="lg:col-span-2">
+          <div>
             <h4 className="font-semibold text-sm mb-5">Support</h4>
             <ul className="space-y-3">
               {footerLinks.support.map((link) =>
@@ -183,17 +191,17 @@ export default function Footer() {
           </div>
 
           {/* Call to Action */}
-          <div className="lg:col-span-2">
+          <div>
             <h4 className="font-semibold text-sm mb-5">Ready to Start?</h4>
             <p className="text-white/50 text-sm leading-relaxed mb-4">
               Take the first step toward a career in technology. Our advisors are here to guide you.
             </p>
             <a
-              href="tel:+15313954129"
+              href={`tel:${indiaPhoneNumber.tel}`}
               className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-5 py-3 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
             >
               <i className="ri-phone-line" />
-              Call (531) 395 4129
+              Call {indiaPhoneNumber.display}
             </a>
           </div>
         </div>

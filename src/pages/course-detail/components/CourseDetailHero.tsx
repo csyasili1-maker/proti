@@ -49,7 +49,7 @@ function renderStars(rating: number) {
   return stars;
 }
 
-const whatsappNumber = '+15313954129';
+const whatsappNumber = '919492876779';
 
 function getWhatsAppMessage(course: Course): string {
   const lines = [
@@ -85,6 +85,8 @@ const navLinks = [
 
 export default function CourseDetailHero({ course }: CourseDetailHeroProps) {
   const [activeSection, setActiveSection] = useState('overview');
+  const heroTitle = course.heroTitle || `Become a Job-Ready ${course.title}`;
+  const heroPrefix = 'Become a Job-Ready ';
 
   const scrollTo = useCallback((id: string) => {
     const el = document.getElementById(id);
@@ -153,8 +155,14 @@ export default function CourseDetailHero({ course }: CourseDetailHeroProps) {
 
               {/* Title */}
               <h1 className="text-4xl md:text-5xl lg:text-[52px] font-bold font-display text-dark leading-[1.12] mb-6">
-                Become a Job-Ready{' '}
-                <span className="text-brand">{course.title}</span>
+                {heroTitle.startsWith(heroPrefix) ? (
+                  <>
+                    {heroPrefix}
+                    <span className="text-brand">{heroTitle.slice(heroPrefix.length)}</span>
+                  </>
+                ) : (
+                  <span className="text-brand">{heroTitle}</span>
+                )}
               </h1>
 
               {/* Description */}

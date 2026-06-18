@@ -6,7 +6,7 @@ interface CourseCompareProps {
   course: Course;
 }
 
-const whatsappNumber = '+15313954129';
+const whatsappNumber = '919492876779';
 
 function getCompareWhatsAppMessage(c: Course): string {
   const lines = [

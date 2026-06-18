@@ -151,8 +151,9 @@ export default function PrivacyPolicyPage() {
               </p>
               <ul className="list-none space-y-2 leading-relaxed">
                 <li><strong>Email:</strong> proitkeys@gmail.com</li>
-                <li><strong>Phone:</strong> (531) 395 4129</li>
-                <li><strong>WhatsApp:</strong> (531) 395 4129</li>
+                <li><strong>Phone (US):</strong> +1 (531) 395 4129</li>
+                <li><strong>Phone (India):</strong> +91 94928 76779</li>
+                <li><strong>WhatsApp:</strong> +91 94928 76779</li>
                 <li><strong>Website:</strong> Contact us at our <Link to="/contact" className="text-[#f15a24] hover:underline">contact page</Link></li>
               </ul>
             </div>

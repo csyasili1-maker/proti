@@ -18,7 +18,7 @@ export default function CTABanners() {
             </div>
             <div className="mt-5 md:mt-6">
               <a
-                href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I%20want%20to%20launch%20my%20career%20with%20your%20training%20programs.%20Please%20share%20the%20details."
+                href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I%20want%20to%20launch%20my%20career%20with%20your%20training%20programs.%20Please%20share%20the%20details."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white text-brand px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold hover:bg-white/90 transition-colors whitespace-nowrap"
@@ -44,7 +44,7 @@ export default function CTABanners() {
             </div>
             <div className="mt-5 md:mt-6">
               <a
-                href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I'm%20interested%20in%20your%20live%20interactive%20training%20classes.%20Please%20share%20more%20details."
+                href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I'm%20interested%20in%20your%20live%20interactive%20training%20classes.%20Please%20share%20more%20details."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white text-[#15325b] px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold hover:bg-white/90 transition-colors whitespace-nowrap"

@@ -2,7 +2,7 @@ import OptimizedImage from '@/components/base/OptimizedImage';
 import { generateFeatures } from '@/utils/courseDetailUtils';
 import type { Course } from '@/mocks/coursesData';
 
-const whatsappNumber = '+15313954129';
+const whatsappNumber = '919492876779';
 
 function getWhatsAppMessage(course: Course): string {
   const lines = [
@@ -29,6 +29,9 @@ interface CourseOverviewProps {
 
 export default function CourseOverview({ course }: CourseOverviewProps) {
   const features = generateFeatures(course);
+  const overviewParagraphs = course.overviewDescription && course.overviewDescription.length > 0
+    ? course.overviewDescription
+    : [];
 
   const highlights = [
     { icon: 'ri-time-line', label: 'Duration', value: `${course.duration} Weeks` },
@@ -51,7 +54,13 @@ export default function CourseOverview({ course }: CourseOverviewProps) {
               Built to Match <span className="text-brand">Industry Hiring Standards</span>
             </h2>
 
-            <p className="text-dark/60 text-base leading-relaxed mb-4">
+            {overviewParagraphs.map((paragraph, index) => (
+              <p key={index} className="text-dark/60 text-base leading-relaxed mb-4">
+                {paragraph}
+              </p>
+            ))}
+
+            <p className={`text-dark/60 text-base leading-relaxed mb-4 ${overviewParagraphs.length > 0 ? 'hidden' : ''}`}>
               The {course.title} program at PROITKEYS is designed around what employers actually need — not outdated theory. You will learn how modern {course.category} teams operate, the tools they use, and the skills they value most.
             </p>
 
@@ -59,7 +68,7 @@ export default function CourseOverview({ course }: CourseOverviewProps) {
               By the end of this training, you will be able to:
             </p>
 
-            <div className="grid grid-cols-2 gap-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
               {features.slice(0, 6).map((item, i) => (
                 <div key={i} className="flex items-center gap-2.5 bg-white rounded-lg px-4 py-3">
                   <i className="ri-checkbox-circle-fill text-brand text-base flex-shrink-0" />
@@ -68,7 +77,7 @@ export default function CourseOverview({ course }: CourseOverviewProps) {
               ))}
             </div>
 
-            {course.level === 'Beginner' && (
+            {course.level.includes('Beginner') && (
               <p className="text-dark/50 text-sm mt-6 italic">No prior experience required.</p>
             )}
           </div>

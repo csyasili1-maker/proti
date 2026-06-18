@@ -1,3 +1,5 @@
+import { getWhatsAppUrl, indiaPhoneNumber, usPhoneNumber } from '@/config/contact';
+
 export default function ContactInfo() {
   return (
     <section className="w-full py-16 md:py-24 bg-light">
@@ -19,12 +21,20 @@ export default function ContactInfo() {
             </div>
             <h3 className="text-lg font-bold font-display text-dark mb-2">Call Us</h3>
             <p className="text-dark/50 text-sm mb-3">Speak directly with an advisor</p>
-            <a
-              href="tel:+15313954129"
-              className="text-brand font-semibold text-base hover:text-brand-dark transition-colors whitespace-nowrap"
-            >
-              +1 (531) 395 4129
-            </a>
+            <div className="flex flex-col items-center gap-1">
+              <a
+                href={`tel:${usPhoneNumber.tel}`}
+                className="text-brand font-semibold text-base hover:text-brand-dark transition-colors whitespace-nowrap"
+              >
+                {usPhoneNumber.display}
+              </a>
+              <a
+                href={`tel:${indiaPhoneNumber.tel}`}
+                className="text-brand font-semibold text-base hover:text-brand-dark transition-colors whitespace-nowrap"
+              >
+                {indiaPhoneNumber.display}
+              </a>
+            </div>
           </div>
 
           <div className="bg-white rounded-2xl p-8 text-center hover:shadow-md transition-shadow">
@@ -48,12 +58,12 @@ export default function ContactInfo() {
             <h3 className="text-lg font-bold font-display text-dark mb-2">WhatsApp</h3>
             <p className="text-dark/50 text-sm mb-3">Quick message support</p>
             <a
-              href="https://wa.me/15313954129"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand font-semibold text-base hover:text-brand-dark transition-colors whitespace-nowrap"
             >
-              Message Us
+              {indiaPhoneNumber.display}
             </a>
           </div>
         </div>
@@ -77,7 +87,7 @@ export default function ContactInfo() {
           </div>
           <div className="text-center mt-6">
             <a
-              href="https://wa.me/15313954129"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"

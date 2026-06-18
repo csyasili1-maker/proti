@@ -15,6 +15,11 @@ export default function CourseDetailContent({ course }: CourseDetailContentProps
   const modules = generateCurriculumModules(course);
   const prerequisites = generatePrerequisites(course);
   const targetAudience = generateTargetAudience(course);
+  const levelStartingPoint = course.level.includes('Beginner')
+    ? 'foundational skills'
+    : course.level.includes('Intermediate')
+    ? 'intermediate knowledge'
+    : 'advanced expertise';
 
   return (
     <>
@@ -27,7 +32,7 @@ export default function CourseDetailContent({ course }: CourseDetailContentProps
               What You Will <span className="text-brand">Learn</span>
             </h2>
             <p className="text-dark/50 text-base mt-4 max-w-2xl mx-auto">
-              A structured curriculum designed to take you from {course.level === 'Beginner' ? 'absolute beginner' : course.level === 'Intermediate' ? 'intermediate knowledge' : 'advanced expertise'} to job-ready professional in {course.category}.
+              A structured curriculum designed to take you from {levelStartingPoint} to job-ready professional in {course.category}.
             </p>
           </div>
 

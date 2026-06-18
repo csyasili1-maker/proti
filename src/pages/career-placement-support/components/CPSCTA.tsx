@@ -18,7 +18,7 @@ export default function CPSCTA() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I'm%20interested%20in%20career%20placement%20support.%20Can%20we%20schedule%20a%20consultation?"
+                href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I'm%20interested%20in%20career%20placement%20support.%20Can%20we%20schedule%20a%20consultation?"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
@@ -27,7 +27,7 @@ export default function CPSCTA() {
                 <i className="ri-whatsapp-line" />
               </a>
               <a
-                href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I'd%20like%20to%20speak%20with%20a%20placement%20advisor."
+                href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I'd%20like%20to%20speak%20with%20a%20placement%20advisor."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white/10 text-white border border-white/20 hover:bg-white/20 px-8 py-4 rounded-full text-sm font-semibold transition-all whitespace-nowrap"

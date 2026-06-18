@@ -1,4 +1,5 @@
 import { useMemo, useRef, useEffect, useState, useCallback } from 'react';
+import type { PointerEvent } from 'react';
 import { courses, categories, levels, durations } from '@/mocks/coursesData';
 
 interface CourseFiltersProps {
@@ -27,7 +28,11 @@ export default function CourseFilters({
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const dragStateRef = useRef({ startX: 0, scrollLeft: 0, moved: false });
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const [isDraggingTabs, setIsDraggingTabs] = useState(false);
 
   const displayCategories = useMemo(() => categories.filter(c => c !== 'All'), []);
 
@@ -54,6 +59,67 @@ export default function CourseFilters({
     setSearchQuery('');
   }, [setSelectedCategory, setSelectedLevel, setSelectedDuration, setSearchQuery]);
 
+  const updateCategoryScrollState = useCallback(() => {
+    const container = tabsContainerRef.current;
+    if (!container) return;
+
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    setCanScrollLeft(container.scrollLeft > 4);
+    setCanScrollRight(container.scrollLeft < maxScrollLeft - 4);
+  }, []);
+
+  const selectCategory = useCallback((category: string) => {
+    if (dragStateRef.current.moved) {
+      dragStateRef.current.moved = false;
+      return;
+    }
+
+    setSelectedCategory(category);
+  }, [setSelectedCategory]);
+
+  const scrollCategoryTabs = useCallback((direction: 'left' | 'right') => {
+    const container = tabsContainerRef.current;
+    if (!container) return;
+
+    container.scrollBy({
+      left: direction === 'left' ? -360 : 360,
+      behavior: 'smooth',
+    });
+  }, []);
+
+  const handleTabsPointerDown = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    const container = tabsContainerRef.current;
+    if (!container || event.pointerType === 'mouse' && event.button !== 0) return;
+
+    dragStateRef.current = {
+      startX: event.clientX,
+      scrollLeft: container.scrollLeft,
+      moved: false,
+    };
+    setIsDraggingTabs(true);
+    container.setPointerCapture(event.pointerId);
+  }, []);
+
+  const handleTabsPointerMove = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    const container = tabsContainerRef.current;
+    if (!container || !isDraggingTabs) return;
+
+    const deltaX = event.clientX - dragStateRef.current.startX;
+    if (Math.abs(deltaX) > 6) {
+      dragStateRef.current.moved = true;
+    }
+
+    container.scrollLeft = dragStateRef.current.scrollLeft - deltaX;
+  }, [isDraggingTabs]);
+
+  const handleTabsPointerEnd = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    const container = tabsContainerRef.current;
+    if (container?.hasPointerCapture(event.pointerId)) {
+      container.releasePointerCapture(event.pointerId);
+    }
+    setIsDraggingTabs(false);
+  }, []);
+
   // Animate underline indicator
   useEffect(() => {
     const allCats = ['All', ...displayCategories];
@@ -64,8 +130,27 @@ export default function CourseFilters({
       setIndicatorStyle((prev) =>
         prev.left === nextStyle.left && prev.width === nextStyle.width ? prev : nextStyle
       );
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
   }, [selectedCategory, displayCategories]);
+
+  useEffect(() => {
+    const container = tabsContainerRef.current;
+    if (!container) return;
+
+    updateCategoryScrollState();
+    container.addEventListener('scroll', updateCategoryScrollState, { passive: true });
+    window.addEventListener('resize', updateCategoryScrollState);
+
+    const resizeObserver = new ResizeObserver(updateCategoryScrollState);
+    resizeObserver.observe(container);
+
+    return () => {
+      container.removeEventListener('scroll', updateCategoryScrollState);
+      window.removeEventListener('resize', updateCategoryScrollState);
+      resizeObserver.disconnect();
+    };
+  }, [updateCategoryScrollState, displayCategories]);
 
   const levelOptions = levels.filter(l => l !== 'All');
   const durationOptions = durations.filter(d => d !== 'All');
@@ -74,13 +159,34 @@ export default function CourseFilters({
     <div className="space-y-4">
       {/* Category Tabs with animated underline */}
       <div className="relative">
+        <button
+          type="button"
+          onClick={() => scrollCategoryTabs('left')}
+          disabled={!canScrollLeft}
+          aria-label="Scroll categories left"
+          className={`hidden lg:flex absolute left-0 top-1/2 z-10 h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all ${
+            canScrollLeft
+              ? 'text-foreground-700 hover:border-brand hover:text-brand'
+              : 'pointer-events-none opacity-0'
+          }`}
+        >
+          <i className="ri-arrow-left-s-line text-xl" />
+        </button>
+
         <div
           ref={tabsContainerRef}
-          className="flex items-center gap-1 overflow-x-auto pb-1 scrollbar-hide -mx-1 px-1"
+          onPointerDown={handleTabsPointerDown}
+          onPointerMove={handleTabsPointerMove}
+          onPointerUp={handleTabsPointerEnd}
+          onPointerCancel={handleTabsPointerEnd}
+          onPointerLeave={handleTabsPointerEnd}
+          className={`flex items-center gap-1 overflow-x-auto pb-1 scrollbar-hide -mx-1 px-1 scroll-smooth select-none ${
+            isDraggingTabs ? 'cursor-grabbing' : 'cursor-grab'
+          }`}
         >
           <button
             ref={(el) => { tabRefs.current[0] = el; }}
-            onClick={() => setSelectedCategory('All')}
+            onClick={() => selectCategory('All')}
             className={`relative px-4 py-2.5 text-sm font-semibold whitespace-nowrap rounded-lg transition-colors ${
               selectedCategory === 'All'
                 ? 'text-foreground-950'
@@ -101,7 +207,7 @@ export default function CourseFilters({
             <button
               key={cat}
               ref={(el) => { tabRefs.current[i + 1] = el; }}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => selectCategory(cat)}
               className={`relative px-4 py-2.5 text-sm font-medium whitespace-nowrap rounded-lg transition-colors ${
                 selectedCategory === cat
                   ? 'text-foreground-950'
@@ -119,6 +225,20 @@ export default function CourseFilters({
             </button>
           ))}
         </div>
+
+        <button
+          type="button"
+          onClick={() => scrollCategoryTabs('right')}
+          disabled={!canScrollRight}
+          aria-label="Scroll categories right"
+          className={`hidden lg:flex absolute right-0 top-1/2 z-10 h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all ${
+            canScrollRight
+              ? 'text-foreground-700 hover:border-brand hover:text-brand'
+              : 'pointer-events-none opacity-0'
+          }`}
+        >
+          <i className="ri-arrow-right-s-line text-xl" />
+        </button>
 
         {/* Animated underline */}
         <div

@@ -44,7 +44,7 @@ export default function BecomeInstructor() {
 
         <div className="text-center mt-10">
           <a
-            href="https://wa.me/15313954129?text=Hi%20PROITKEYS!%20I%20want%20to%20start%20my%20learning%20journey%20with%20your%20programs.%20Please%20guide%20me."
+            href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I%20want%20to%20start%20my%20learning%20journey%20with%20your%20programs.%20Please%20guide%20me."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white px-7 py-3.5 rounded-full text-sm font-semibold transition-colors"

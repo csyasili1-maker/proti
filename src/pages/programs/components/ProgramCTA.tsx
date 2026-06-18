@@ -19,7 +19,7 @@ export default function ProgramCTA() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href="https://wa.me/15313954129"
+                href="https://wa.me/919492876779"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-dark px-8 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
@@ -28,7 +28,7 @@ export default function ProgramCTA() {
                 Book Your Free Career Consultation
               </a>
               <a
-                href="tel:+15313954129"
+                href="tel:+919492876779"
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 text-white px-8 py-4 rounded-full text-sm font-semibold transition-all whitespace-nowrap"
               >
                 <i className="ri-phone-line" />

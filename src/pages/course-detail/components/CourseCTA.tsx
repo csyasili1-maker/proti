@@ -1,6 +1,6 @@
 import type { Course } from '@/mocks/coursesData';
 
-const whatsappNumber = '+15313954129';
+const whatsappNumber = '919492876779';
 
 function getWhatsAppMessage(course: Course): string {
   const lines = [
@@ -55,11 +55,11 @@ export default function CourseCTA({ course }: CourseCTAProps) {
                 Enroll via WhatsApp
               </a>
               <a
-                href={`tel:${whatsappNumber}`}
+                href={`tel:+${whatsappNumber}`}
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 text-white px-8 py-4 rounded-full text-sm font-semibold transition-all whitespace-nowrap"
               >
                 <i className="ri-phone-line" />
-                Call (531) 395 4129
+                Call +91 94928 76779
               </a>
             </div>
 

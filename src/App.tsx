@@ -2,9 +2,10 @@ import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./router";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
-import FloatingContactButtons from "./pages/contact/components/FloatingContactButtons";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+
+const FloatingContactButtons = lazy(() => import("./pages/contact/components/FloatingContactButtons"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -20,7 +21,8 @@ function SitePreloader() {
 
   useEffect(() => {
     const startedAt = Date.now();
-    const minDuration = 900;
+    const minDuration = 120;
+    const fadeDuration = 180;
     let fadeTimer: ReturnType<typeof setTimeout>;
     let removeTimer: ReturnType<typeof setTimeout>;
 
@@ -28,18 +30,18 @@ function SitePreloader() {
       const remaining = Math.max(0, minDuration - (Date.now() - startedAt));
       fadeTimer = setTimeout(() => {
         setLeaving(true);
-        removeTimer = setTimeout(() => setVisible(false), 420);
+        removeTimer = setTimeout(() => setVisible(false), fadeDuration);
       }, remaining);
     };
 
-    if (document.readyState === 'complete') {
-      hide();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", hide, { once: true });
     } else {
-      window.addEventListener('load', hide, { once: true });
+      hide();
     }
 
     return () => {
-      window.removeEventListener('load', hide);
+      document.removeEventListener("DOMContentLoaded", hide);
       clearTimeout(fadeTimer);
       clearTimeout(removeTimer);
     };
@@ -51,7 +53,7 @@ function SitePreloader() {
     <div className={`site-preloader ${leaving ? 'site-preloader--leaving' : ''}`}>
       <div className="site-preloader__panel" role="status" aria-live="polite" aria-label="Loading PROITKEYS">
         <img
-          src="/images/brand/proitkeys-logo.png"
+          src="/images/brand/proitkeys-logo-nav.png"
           alt="PROITKEYS"
           width={112}
           height={112}
@@ -72,7 +74,9 @@ function App() {
       <BrowserRouter basename={__BASE_PATH__}>
         <ScrollToTop />
         <AppRoutes />
-        <FloatingContactButtons />
+        <Suspense fallback={null}>
+          <FloatingContactButtons />
+        </Suspense>
         <SitePreloader />
       </BrowserRouter>
     </I18nextProvider>

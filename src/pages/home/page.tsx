@@ -1,22 +1,18 @@
+import { lazy, Suspense, useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import FeaturedCourses from './components/FeaturedCourses';
-import CTABanners from './components/CTABanners';
-import PricingPlans from './components/PricingPlans';
-import AboutTeaching from './components/AboutTeaching';
-import Partners from './components/Partners';
-import CareerSuccessFramework from './components/CareerSuccessFramework';
-import WhyChooseUs from './components/WhyChooseUs';
-import Instructors from './components/Instructors';
-import CTAAffordable from './components/CTAAffordable';
-import BecomeInstructor from './components/BecomeInstructor';
-import Testimonials from './components/Testimonials';
-import EnquiryForm from './components/EnquiryForm';
-import AppDownload from './components/AppDownload';
-import Footer from './components/Footer';
 import { Link } from 'react-router-dom';
 
+const BelowFoldHomeSections = lazy(() => import('./components/BelowFoldHomeSections'));
+
 export default function Home() {
+  const [loadBelowFold, setLoadBelowFold] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setLoadBelowFold(true), 120);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="w-full min-h-screen bg-white">
       <Navbar />
@@ -37,20 +33,9 @@ export default function Home() {
         </div>
       </div>
 
-      <FeaturedCourses />
-      <CTABanners />
-      <PricingPlans />
-      <AboutTeaching />
-      <Partners />
-      <CareerSuccessFramework />
-      <WhyChooseUs />
-      <Instructors />
-      <CTAAffordable />
-      <BecomeInstructor />
-      <Testimonials />
-      <EnquiryForm />
-      <AppDownload />
-      <Footer />
+      <Suspense fallback={<div className="min-h-[360px] bg-white" aria-hidden="true" />}>
+        {loadBelowFold && <BelowFoldHomeSections />}
+      </Suspense>
     </div>
   );
 }

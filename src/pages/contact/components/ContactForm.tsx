@@ -133,7 +133,7 @@ export default function ContactForm() {
                       type="tel"
                       id="phone"
                       name="phone"
-                      placeholder="(531) 395-4129"
+                      placeholder="+91 94928 76779"
                       className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-dark placeholder:text-gray-400 focus:outline-none focus:border-brand/50 focus:ring-2 focus:ring-brand/10 transition-all"
                     />
                   </div>
