@@ -2,7 +2,6 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { services } from '@/mocks/homeData';
 import type { Course } from '@/mocks/coursesData';
-import OptimizedImage from '@/components/base/OptimizedImage';
 import { searchCourses } from '@/utils/courseSearch';
 
 const trendingSearches = [
@@ -158,11 +157,25 @@ export default function HeroSection() {
   );
 
   return (
-    <section className="relative w-full min-h-[580px] md:min-h-[800px] bg-light overflow-hidden pt-20">
-      <div className="w-full px-6 lg:px-10 py-12 md:py-20">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 max-w-[1440px] mx-auto">
+    <section className="relative w-full min-h-[720px] md:min-h-[820px] bg-light overflow-hidden pt-20">
+      <img
+        src="/images/hero/proitkeys-hero-background.jpg"
+        alt=""
+        aria-hidden="true"
+        width={1974}
+        height={797}
+        loading="eager"
+        fetchPriority="high"
+        decoding="sync"
+        className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover object-[62%_center] sm:object-[58%_center] lg:object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/20 md:via-white/80 lg:via-white/65 lg:to-white/5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/55 to-white/90 md:hidden" />
+
+      <div className="relative z-10 w-full px-5 sm:px-6 lg:px-10 py-10 md:py-16">
+        <div className="max-w-[1440px] mx-auto min-h-[620px] md:min-h-[680px] flex items-center">
           {/* Left Content */}
-          <div className="flex-1 w-full">
+          <div className="w-full max-w-2xl lg:max-w-xl xl:max-w-2xl py-8 md:py-12">
             <div className="inline-flex items-center gap-2 bg-brand/10 text-brand px-4 py-1.5 rounded-full text-sm font-medium mb-6">
               <i className="ri-award-line" />
               <span>100+ Professional Courses</span>
@@ -321,41 +334,6 @@ export default function HeroSection() {
                     <span className="font-medium whitespace-nowrap">{srv.name}</span>
                   </button>
                 ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right Image */}
-          <div className="flex-1 w-full relative">
-            <div className="relative">
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-brand/10 rounded-full blur-2xl" />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-teal-500/10 rounded-full blur-2xl" />
-              <OptimizedImage
-                src="https://readdy.ai/api/search-image?query=happy%20diverse%20group%20of%20students%20studying%20together%20with%20laptops%20and%20books%20in%20a%20modern%20bright%20classroom%20with%20warm%20natural%20lighting%2C%20warm%20orange%20and%20teal%20color%20tones%2C%20professional%20educational%20photography%2C%20high%20quality%2C%20clean%20background%20with%20bokeh&width=700&height=550&seq=hero1&orientation=landscape"
-                alt="Students learning together"
-                className="relative z-10 w-full max-w-[600px] mx-auto shadow-xl"
-                priority
-                rounded
-              />
-
-              {/* Floating Card */}
-              <div className="absolute -left-2 sm:-left-4 md:left-4 bottom-6 md:bottom-10 bg-white rounded-2xl shadow-lg p-3 sm:p-4 flex items-center gap-2 sm:gap-3 z-20 animate-bounce" style={{ animationDuration: '3s' }}>
-                <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center">
-                  <i className="ri-user-star-line text-brand text-xl" />
-                </div>
-                <div>
-                  <p className="text-xs text-dark/50">Expert Trainers</p>
-                  <p className="text-sm font-bold text-dark">50+ Mentors</p>
-                </div>
-              </div>
-
-              {/* Floating Card 2 */}
-              <div className="absolute -right-2 sm:-right-4 md:right-8 top-8 md:top-16 bg-white rounded-2xl shadow-lg p-3 sm:p-4 z-20 animate-bounce" style={{ animationDuration: '4s' }}>
-                <div className="flex items-center gap-2 mb-1">
-                  <i className="ri-star-fill text-amber-400 text-sm" />
-                  <span className="text-sm font-bold text-dark">4.9/5</span>
-                </div>
-                <p className="text-xs text-dark/50">Student Rating</p>
               </div>
             </div>
           </div>
