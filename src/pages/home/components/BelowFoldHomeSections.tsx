@@ -12,10 +12,13 @@ import Testimonials from './Testimonials';
 import EnquiryForm from './EnquiryForm';
 import AppDownload from './AppDownload';
 import Footer from './Footer';
+import CorporateBanner from './CorporateBanner';
+import FAQSection from './FAQSection';
 
 export default function BelowFoldHomeSections() {
   return (
     <>
+      <CorporateBanner />
       <AppDownload />
       <FeaturedCourses />
       <CTABanners />
@@ -29,6 +32,7 @@ export default function BelowFoldHomeSections() {
       <BecomeInstructor />
       <Testimonials />
       <EnquiryForm />
+      <FAQSection />
       <Footer />
     </>
   );

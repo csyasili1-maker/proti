@@ -172,27 +172,26 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           <div className="relative z-10 w-full">
             <div className="w-full">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand/10 px-4 py-1.5 text-sm font-semibold text-brand">
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-brand">
                   <i className="ri-star-smile-line" />
-                  <span>Learn Today. Lead Tomorrow.</span>
+                  <span>Live Instructor-Led Training | Real Projects | Career Mentorship | Placement Support</span>
                 </div>
 
                 <h1 className="mb-6 text-4xl font-bold leading-[1.08] text-dark sm:text-5xl lg:text-[58px]">
-                  Future-Ready Skills,{' '}
-                  <span className="block text-brand">Limitless Opportunities</span>
+                  Build The Skills Companies Are Hiring For In 2026
                 </h1>
 
                 <p className="mb-8 max-w-2xl text-base leading-relaxed text-dark/70 md:text-lg">
-                  Master in-demand technologies through expert-led training, hands-on projects, certifications, and career support that helps you get hired faster.
+                  Become Job-Ready in AI, Data Engineering, Cloud, DevOps, Full Stack Development & Business Analytics.
                 </p>
 
-                <div ref={containerRef} className="relative mb-4 max-w-2xl">
+                <div ref={containerRef} className="relative mb-6 max-w-2xl">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                     <div className="relative flex-1">
                       <i className="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-lg text-dark/40" />
                       <input
                         type="text"
-                        placeholder="What do you want to learn today?"
+                        placeholder="Search AI, Cloud, Data Science, DevOps, Java, Salesforce..."
                         value={searchQuery}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
@@ -267,6 +266,23 @@ export default function HeroSection() {
                   )}
                 </div>
 
+                <div className="flex flex-wrap gap-4 mb-8">
+                  <Link
+                    to="/courses"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-dark px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-dark/20 transition-all hover:bg-dark-lighter hover:-translate-y-0.5"
+                  >
+                    Explore Programs
+                  </Link>
+                  <a
+                    href="https://wa.me/919492876779?text=Hi%20PROITKEYS!%20I%20would%20like%20to%20book%20a%20free%20career%20consultation."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition-all hover:bg-brand-dark hover:-translate-y-0.5"
+                  >
+                    Book Free Career Consultation
+                  </a>
+                </div>
+
                 <div className="max-w-2xl">
                   <p className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-dark/45">Popular Searches</p>
                   <div className="flex flex-wrap gap-2">
@@ -299,36 +315,74 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="w-full border-t border-b border-gray-100 bg-white">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-4 lg:p-5">
-          {heroHighlights.map((item, index) => (
-            <div key={item.title} className={`flex items-center gap-4 p-3 ${index !== 0 ? 'border-t border-gray-100 md:border-l md:border-t-0' : ''}`}>
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
-                <i className={`${item.icon} text-2xl`} />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-dark">{item.title}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-dark/60">{item.text}</p>
-              </div>
-            </div>
-          ))}
+      {/* Tech Logos Strip */}
+      <div className="w-full border-t border-b border-gray-100 bg-gray-50/50 py-5">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 lg:px-14">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm font-semibold tracking-wider text-dark/65 uppercase text-center">
+            <span>Microsoft</span>
+            <span className="text-gray-300">•</span>
+            <span>AWS</span>
+            <span className="text-gray-300">•</span>
+            <span>Databricks</span>
+            <span className="text-gray-300">•</span>
+            <span>Kubernetes</span>
+            <span className="text-gray-300">•</span>
+            <span>Google Cloud</span>
+            <span className="text-gray-300">•</span>
+            <span>Salesforce</span>
+            <span className="text-gray-300">•</span>
+            <span>SAP</span>
+          </div>
         </div>
       </div>
 
-      <div className="w-full bg-dark text-white py-6 sm:py-8">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 lg:px-10">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {heroStats.map((item, index) => (
-              <div key={item.label} className={`flex items-center gap-4 ${index !== 0 ? 'lg:border-l lg:border-white/15 lg:pl-7' : ''}`}>
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
-                  <i className={`${item.icon} text-2xl`} />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold leading-none">{item.value}</p>
-                  <p className="mt-1 text-xs text-white/70">{item.label}</p>
-                </div>
+      {/* Success Metrics stats block */}
+      <div className="w-full bg-dark text-white py-10 sm:py-12">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 lg:px-14">
+          <h2 className="text-center text-sm sm:text-base font-bold uppercase tracking-widest text-white/50 mb-10">
+            Trusted By Professionals Worldwide
+          </h2>
+          <div className="grid gap-6 sm:gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            {/* Stat 1 */}
+            <div className="flex flex-col items-center text-center p-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white mb-3">
+                <i className="ri-book-open-line text-2xl" />
               </div>
-            ))}
+              <p className="text-2xl sm:text-3xl font-extrabold leading-none text-white">100+</p>
+              <p className="mt-2 text-xs sm:text-sm text-white/60">Courses</p>
+            </div>
+            {/* Stat 2 */}
+            <div className="flex flex-col items-center text-center p-3 border-l border-white/5 sm:border-l-0 md:border-l md:border-white/5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white mb-3">
+                <i className="ri-group-line text-2xl" />
+              </div>
+              <p className="text-2xl sm:text-3xl font-extrabold leading-none text-white">5,000+</p>
+              <p className="mt-2 text-xs sm:text-sm text-white/60">Professionals Trained</p>
+            </div>
+            {/* Stat 3 */}
+            <div className="flex flex-col items-center text-center p-3 border-l border-white/5 md:border-l-0 lg:border-l lg:border-white/5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white mb-3">
+                <i className="ri-heart-line text-2xl" />
+              </div>
+              <p className="text-2xl sm:text-3xl font-extrabold leading-none text-white">95%</p>
+              <p className="mt-2 text-xs sm:text-sm text-white/60">Student Satisfaction</p>
+            </div>
+            {/* Stat 4 */}
+            <div className="flex flex-col items-center text-center p-3 border-l border-white/5 lg:border-l-0 xl:border-l xl:border-white/5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white mb-3">
+                <i className="ri-building-line text-2xl" />
+              </div>
+              <p className="text-2xl sm:text-3xl font-extrabold leading-none text-white">50+</p>
+              <p className="mt-2 text-xs sm:text-sm text-white/60">Corporate Workshops</p>
+            </div>
+            {/* Stat 5 */}
+            <div className="flex flex-col items-center text-center p-3 border-l border-white/5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white mb-3">
+                <i className="ri-user-star-line text-2xl" />
+              </div>
+              <p className="text-2xl sm:text-3xl font-extrabold leading-none text-white">25+</p>
+              <p className="mt-2 text-xs sm:text-sm text-white/60">Industry Trainers</p>
+            </div>
           </div>
         </div>
       </div>

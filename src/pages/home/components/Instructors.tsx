@@ -6,14 +6,37 @@ export default function Instructors() {
     <section className="w-full py-16 md:py-24 bg-white">
       <div className="w-full px-6 lg:px-10 max-w-[1440px] mx-auto">
         {/* Header */}
-        <div className="mb-12 max-w-3xl">
+        <div className="mb-12 max-w-4xl">
           <span className="text-sm font-semibold text-brand uppercase tracking-wider">Expert Trainers</span>
           <h2 className="text-3xl md:text-4xl font-bold font-display text-dark mt-2">
-            Learn From The <span className="text-brand">Industry Best</span>
+            Learn From <span className="text-brand">Practicing Industry Experts</span>
           </h2>
-          <p className="text-dark/60 text-sm md:text-base mt-4">
-            Our trainers bring years of real-world corporate experience to help you master in-demand skills with practical insights.
+          <p className="text-dark/70 text-sm md:text-base mt-4 max-w-3xl leading-relaxed">
+            Our trainers are working professionals, architects, consultants, and technology leaders who bring real-world experience directly into the classroom.
           </p>
+          
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-3 gap-x-6 text-sm font-semibold text-dark/80">
+            <div className="flex items-center gap-2.5">
+              <i className="ri-checkbox-circle-line text-brand text-lg" />
+              <span>50+ Years Combined Industry Experience</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <i className="ri-checkbox-circle-line text-brand text-lg" />
+              <span>Microsoft, AWS & Databricks Certified Trainers</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <i className="ri-checkbox-circle-line text-brand text-lg" />
+              <span>Corporate Training Experts</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <i className="ri-checkbox-circle-line text-brand text-lg" />
+              <span>Real Project Mentors</span>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <i className="ri-checkbox-circle-line text-brand text-lg" />
+              <span>Interview & Career Coaches</span>
+            </div>
+          </div>
         </div>
 
         {/* Instructor Grid */}

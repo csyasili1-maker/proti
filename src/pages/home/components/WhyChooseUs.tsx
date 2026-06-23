@@ -55,9 +55,7 @@ export default function WhyChooseUs() {
             {whyChooseUsFeatures.map((feature, index) => (
               <div
                 key={feature.id}
-                className={`group relative overflow-hidden rounded-lg border border-gray-100 bg-white p-5 md:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/25 hover:shadow-xl ${
-                  index === 0 ? 'sm:col-span-2' : ''
-                }`}
+                className="group relative overflow-hidden rounded-lg border border-gray-100 bg-white p-5 md:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/25 hover:shadow-xl"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">

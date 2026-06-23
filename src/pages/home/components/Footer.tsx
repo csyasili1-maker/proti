@@ -44,8 +44,9 @@ export default function Footer() {
               />
             </div>
 
-            <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-xs">
-              Building Careers. Transforming Futures. Industry-oriented IT training with structured career support for professionals in the United States.
+            <h4 className="font-bold text-base text-white mb-2">PROITKEYS – Your Career Growth Partner</h4>
+            <p className="text-white/50 text-xs leading-relaxed mb-6 max-w-xs">
+              From beginner to professional, we provide structured learning paths, expert mentorship, real-world projects, and placement-focused support to help you succeed in today's competitive technology landscape.
             </p>
 
             <div className="space-y-3 mb-6">
@@ -71,13 +72,13 @@ export default function Footer() {
                 <span>proitkeys@gmail.com</span>
               </a>
               <a
-                href={getWhatsAppUrl()}
+                href="https://whatsapp.com/channel/0029VbCNshgEquiWToNeUV1f"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-white/50 text-sm hover:text-brand transition-colors"
               >
                 <i className="ri-whatsapp-line text-brand" />
-                <span>WhatsApp: {indiaPhoneNumber.display}</span>
+                <span>WhatsApp Channel</span>
               </a>
               <div className="flex items-center gap-3 text-white/50 text-sm">
                 <i className="ri-map-pin-line text-brand" />
