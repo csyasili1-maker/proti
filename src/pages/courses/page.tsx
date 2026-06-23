@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Navbar from '@/pages/home/components/Navbar';
 import Footer from '@/pages/home/components/Footer';
@@ -7,6 +7,8 @@ import PlacementSupportBanner from './components/PlacementSupportBanner';
 import CourseFilters from './components/CourseFilters';
 import CourseGrid from './components/CourseGrid';
 import CoursesCTA from './components/CoursesCTA';
+import { useSeo } from '@/hooks/useSeo';
+import { courses } from '@/mocks/coursesData';
 
 export default function CoursesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,6 +20,31 @@ export default function CoursesPage() {
   const [selectedLevel, setSelectedLevel] = useState('All');
   const [selectedDuration, setSelectedDuration] = useState('All');
   const [isFilterSticky, setIsFilterSticky] = useState(false);
+
+  const schemas = useMemo(() => [
+    {
+      '@type': 'ItemList',
+      '@id': 'https://proitkeys.com/courses/#itemlist',
+      'name': 'PROITKEYS IT Training Catalog',
+      'description': 'Browse our live online IT training courses and programs.',
+      'url': 'https://proitkeys.com/courses',
+      'numberOfItems': courses.length,
+      'itemListElement': courses.map((course, idx) => ({
+        '@type': 'ListItem',
+        'position': idx + 1,
+        'url': `https://proitkeys.com/courses/${course.slug}`,
+        'name': course.title
+      }))
+    }
+  ], []);
+
+  useSeo({
+    title: 'Explore Career-Focused IT Courses & Bootcamps',
+    description: 'Browse our selection of live instructor-led tech bootcamps in AI, Data Engineering, DevOps, Salesforce, and Cloud Computing. Stand out with professional training.',
+    keywords: 'IT courses USA, AI bootcamps, Cloud engineering courses, DevOps certification training, Salesforce developer course, Data science certification, IT career bootcamps',
+    canonicalUrl: 'https://proitkeys.com/courses',
+    schemas
+  });
 
   const filterSentinelRef = useRef<HTMLDivElement>(null);
 

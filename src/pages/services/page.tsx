@@ -8,8 +8,32 @@ import WhoBenefits from './components/WhoBenefits';
 import Differentiator from './components/Differentiator';
 import ServicesCTA from './components/ServicesCTA';
 import { Link } from 'react-router-dom';
+import { useSeo } from '@/hooks/useSeo';
+import { useMemo } from 'react';
 
 export default function ServicesPage() {
+  const schemas = useMemo(() => [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://proitkeys.com/services/#webpage',
+      'name': 'Our Services — PROITKEYS',
+      'description': 'Discover our IT career training services and professional mentoring solutions.',
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'PROITKEYS',
+        'url': 'https://proitkeys.com'
+      }
+    }
+  ], []);
+
+  useSeo({
+    title: 'Our Services — Live IT Training & Mentor Solutions',
+    description: 'Explore PROITKEYS\' training services: live interactive classes, virtual internships, resume preparation, mock interviews, and certification guidance.',
+    keywords: 'IT training services, live online classes, virtual tech internships, mock interviews helper, resume building service USA',
+    canonicalUrl: 'https://proitkeys.com/services',
+    schemas
+  });
+
   return (
     <div className="w-full min-h-screen bg-white">
       <Navbar />
