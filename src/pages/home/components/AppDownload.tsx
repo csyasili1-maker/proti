@@ -30,14 +30,12 @@ export default function AppDownload() {
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white to-transparent pointer-events-none" />
 
       <div className="w-full px-6 lg:px-10 max-w-[1440px] mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-10 md:mb-12">
-          <div className="max-w-3xl">
-            <span className="text-sm font-semibold text-brand uppercase tracking-wider">Featured Courses</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-display mt-2 text-dark">
-              Future-Ready Tech Career Programs
-            </h2>
-          </div>
-          <p className="text-dark/60 text-sm md:text-base max-w-xl">
+        <div className="mb-10 md:mb-12 max-w-3xl">
+          <span className="text-sm font-semibold text-brand uppercase tracking-wider">Featured Courses</span>
+          <h2 className="text-3xl md:text-4xl font-bold font-display mt-2 text-dark">
+            Future-Ready Tech Career Programs
+          </h2>
+          <p className="text-dark/60 text-sm md:text-base mt-4">
             Master Full Stack Development, AI & Machine Learning, Data Analytics, and Cloud Technologies through live instructor-led training, hands-on projects, industry mentorship, and placement-focused career support.
           </p>
         </div>

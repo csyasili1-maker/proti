@@ -23,11 +23,19 @@ export default function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
+          {[
+            testimonials[current],
+            testimonials[(current + 1) % testimonials.length],
+            testimonials[(current + 2) % testimonials.length],
+          ].map((t, index) => (
             <div
               key={t.id}
               className={`bg-white rounded-2xl p-6 border border-gray-100 transition-all duration-300 ${
-                i === current ? 'ring-2 ring-brand/20 shadow-lg' : ''
+                index === 0 ? 'ring-2 ring-brand/20 shadow-lg' : ''
+              } ${
+                index === 1 ? 'hidden md:block' : ''
+              } ${
+                index === 2 ? 'hidden lg:block' : ''
               }`}
             >
               <div className="flex items-center gap-1 mb-4">

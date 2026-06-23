@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { services } from '@/mocks/homeData';
 import type { Course } from '@/mocks/coursesData';
 import { searchCourses } from '@/utils/courseSearch';
 
@@ -11,6 +10,20 @@ const trendingSearches = [
   { label: 'Azure', icon: 'ri-microsoft-line' },
   { label: 'Data Science', icon: 'ri-bar-chart-grouped-line' },
   { label: 'Cybersecurity', icon: 'ri-shield-check-line' },
+];
+
+const heroHighlights = [
+  { icon: 'ri-user-star-line', title: 'Expert Trainers', text: 'Learn from industry professionals' },
+  { icon: 'ri-code-box-line', title: 'Hands-on Learning', text: 'Work on real-world projects' },
+  { icon: 'ri-award-line', title: 'Certification', text: 'Industry-recognized training' },
+  { icon: 'ri-briefcase-4-line', title: 'Placement Support', text: 'Resume, interview prep and job assistance' },
+];
+
+const heroStats = [
+  { icon: 'ri-group-line', value: '10,000+', label: 'Students Trained' },
+  { icon: 'ri-graduation-cap-line', value: '150+', label: 'Expert Trainers' },
+  { icon: 'ri-building-4-line', value: '500+', label: 'Hiring Partners' },
+  { icon: 'ri-thumb-up-line', value: '4.8/5', label: 'Student Rating' },
 ];
 
 export default function HeroSection() {
@@ -35,7 +48,6 @@ export default function HeroSection() {
       return;
     }
 
-    // Simulate API loading for skeleton demo
     setIsLoading(true);
     if (debounceRef.current) clearTimeout(debounceRef.current);
     const requestId = searchRequestRef.current + 1;
@@ -127,9 +139,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     if (highlightedIndex >= 0 && resultItemRefs.current[highlightedIndex]) {
-      resultItemRefs.current[highlightedIndex]?.scrollIntoView({
-        block: 'nearest',
-      });
+      resultItemRefs.current[highlightedIndex]?.scrollIntoView({ block: 'nearest' });
     }
   }, [highlightedIndex]);
 
@@ -157,185 +167,168 @@ export default function HeroSection() {
   );
 
   return (
-    <section className="relative w-full min-h-[720px] md:min-h-[820px] bg-light overflow-hidden pt-20">
-      <img
-        src="/images/hero/proitkeys-hero-background.jpg"
-        alt=""
-        aria-hidden="true"
-        width={1974}
-        height={797}
-        loading="eager"
-        fetchPriority="high"
-        decoding="sync"
-        className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover object-[62%_center] sm:object-[58%_center] lg:object-center"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/20 md:via-white/80 lg:via-white/65 lg:to-white/5" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/55 to-white/90 md:hidden" />
-
-      <div className="relative z-10 w-full px-5 sm:px-6 lg:px-10 py-10 md:py-16">
-        <div className="max-w-[1440px] mx-auto min-h-[620px] md:min-h-[680px] flex items-center">
-          {/* Left Content */}
-          <div className="w-full max-w-2xl lg:max-w-xl xl:max-w-2xl py-8 md:py-12">
-            <div className="inline-flex items-center gap-2 bg-brand/10 text-brand px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-              <i className="ri-award-line" />
-              <span>100+ Professional Courses</span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold font-display text-dark leading-[1.15] mb-6">
-              Where Learning{' '}
-              <span className="text-brand">Unlocks Opportunities</span>
-            </h1>
-
-            <p className="text-dark/60 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
-              PROITKEYS offers practical, career-focused training in Cloud Computing, AI, Data Science, Cybersecurity, and more. Transform into a confident, job-ready professional.
-            </p>
-
-            {/* Search Bar */}
-            <div ref={containerRef} className="relative max-w-xl mb-4">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="flex-1 relative">
-                  <i className="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-dark/40 text-lg" />
-                  <input
-                    type="text"
-                    placeholder="What do you want to learn today?"
-                    value={searchQuery}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown}
-                    onFocus={() => {
-                      if (searchQuery.trim() && results.length > 0) {
-                        setShowDropdown(true);
-                      }
-                    }}
-                    className="w-full pl-12 pr-4 py-4 rounded-full border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none text-sm text-dark bg-white"
-                  />
+    <section className="relative w-full overflow-hidden bg-white pt-20">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 lg:px-14 py-8 md:py-12 lg:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+          <div className="relative z-10 w-full">
+            <div className="w-full">
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-brand/10 px-4 py-1.5 text-sm font-semibold text-brand">
+                  <i className="ri-star-smile-line" />
+                  <span>Learn Today. Lead Tomorrow.</span>
                 </div>
-                <button
-                  onClick={handleSearchClick}
-                  className="bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
-                >
-                  Search
-                </button>
-              </div>
 
-              {/* Dropdown Results - Loading Skeleton */}
-              {showDropdown && isLoading && (
-                <div
-                  className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl border border-gray-100 overflow-hidden z-50"
-                  style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.08)' }}
-                >
-                  <div className="p-2">
-                    <SkeletonItem />
-                    <SkeletonItem />
-                    <SkeletonItem />
-                    <SkeletonItem />
-                  </div>
-                </div>
-              )}
+                <h1 className="mb-6 text-4xl font-bold leading-[1.08] text-dark sm:text-5xl lg:text-[58px]">
+                  Future-Ready Skills,{' '}
+                  <span className="block text-brand">Limitless Opportunities</span>
+                </h1>
 
-              {/* Dropdown Results - Loaded */}
-              {showDropdown && !isLoading && results.length > 0 && (
-                <div
-                  ref={dropdownRef}
-                  className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl border border-gray-100 overflow-hidden z-50"
-                  style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.08)' }}
-                >
-                  <div className="p-2">
-                    {results.map((course, index) => (
-                      <Link
-                        key={course.id}
-                        ref={(el) => { resultItemRefs.current[index] = el; }}
-                        to={`/courses/${course.slug}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          openCourse(course.slug);
+                <p className="mb-8 max-w-2xl text-base leading-relaxed text-dark/70 md:text-lg">
+                  Master in-demand technologies through expert-led training, hands-on projects, certifications, and career support that helps you get hired faster.
+                </p>
+
+                <div ref={containerRef} className="relative mb-4 max-w-2xl">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <div className="relative flex-1">
+                      <i className="ri-search-line absolute left-4 top-1/2 -translate-y-1/2 text-lg text-dark/40" />
+                      <input
+                        type="text"
+                        placeholder="What do you want to learn today?"
+                        value={searchQuery}
+                        onChange={handleInputChange}
+                        onKeyDown={handleKeyDown}
+                        onFocus={() => {
+                          if (searchQuery.trim() && results.length > 0) {
+                            setShowDropdown(true);
+                          }
                         }}
-                        className={`flex items-start gap-3 px-3 py-2.5 rounded-xl transition-colors cursor-pointer ${
-                          index === highlightedIndex
-                            ? 'bg-brand/5'
-                            : 'hover:bg-gray-50'
-                        }`}
-                      >
-                        <div className="w-9 h-9 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <i className="ri-book-open-line text-brand text-sm" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-dark truncate">
-                            {highlightMatch(course.title)}
-                          </p>
-                          <p className="text-xs text-dark/40 mt-0.5">
-                            {course.category} · {course.duration} Weeks
-                          </p>
-                        </div>
-                        <i className="ri-arrow-right-up-line text-dark/20 text-sm mt-1 flex-shrink-0" />
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="border-t border-gray-50 px-3 py-2.5">
+                        className="h-14 w-full rounded-full border border-gray-200 bg-white/95 pl-12 pr-4 text-sm text-dark shadow-sm outline-none backdrop-blur transition-all focus:border-brand focus:ring-2 focus:ring-brand/20 lg:bg-white"
+                      />
+                    </div>
                     <button
                       onClick={handleSearchClick}
-                      className="w-full text-center text-sm text-brand font-medium hover:text-brand-dark transition-colors py-1"
+                      className="flex h-14 w-full items-center justify-center rounded-full bg-brand px-8 text-sm font-semibold text-white shadow-lg shadow-brand/20 transition-colors hover:bg-brand-dark sm:w-auto sm:min-w-[128px]"
                     >
-                      View all results for &quot;{searchQuery.trim()}&quot;
+                      Search
                     </button>
                   </div>
-                </div>
-              )}
 
-              {/* No Results */}
-              {showDropdown && !isLoading && searchQuery.trim() && results.length === 0 && (
-                <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl border border-gray-100 p-6 text-center z-50" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.08)' }}>
-                  <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-3">
-                    <i className="ri-search-line text-dark/30 text-xl" />
-                  </div>
-                  <p className="text-sm text-dark/60">No courses found for &quot;{searchQuery.trim()}&quot;</p>
-                  <p className="text-xs text-dark/40 mt-1">Try a different search term</p>
-                </div>
-              )}
-            </div>
-
-            {/* Trending Searches */}
-            <div className="max-w-xl mb-10">
-              <p className="text-xs text-dark/40 mb-2.5 font-medium uppercase tracking-wide">Popular Searches</p>
-              <div className="flex flex-wrap gap-2">
-                {trendingSearches.map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={() => handleTrendingClick(item.label)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white border border-gray-200 hover:border-brand/40 hover:bg-brand/[0.03] transition-all text-sm text-dark/60 hover:text-brand"
-                  >
-                    <i className={`${item.icon} text-xs`} />
-                    <span className="whitespace-nowrap">{item.label}</span>
-                  </button>
-                ))}
-                <Link
-                  to="/courses"
-                  className="inline-flex items-center gap-1 px-3.5 py-2 rounded-full text-sm text-brand/70 hover:text-brand font-medium transition-colors"
-                >
-                  Browse all <i className="ri-arrow-right-line text-xs" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Services */}
-            <div>
-              <p className="text-sm text-dark/50 mb-4 font-medium">Our Services</p>
-              <div className="flex flex-wrap gap-3">
-                {services.map((srv) => (
-                  <button
-                    key={srv.id}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-gray-200 hover:border-brand hover:shadow-sm transition-all text-sm text-dark/80"
-                  >
-                    <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: `${srv.color}15` }}
-                    >
-                      <i className={`${srv.icon} text-sm`} style={{ color: srv.color }} />
+                  {showDropdown && isLoading && (
+                    <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-gray-100 bg-white" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.08)' }}>
+                      <div className="p-2">
+                        <SkeletonItem />
+                        <SkeletonItem />
+                        <SkeletonItem />
+                        <SkeletonItem />
+                      </div>
                     </div>
-                    <span className="font-medium whitespace-nowrap">{srv.name}</span>
-                  </button>
-                ))}
+                  )}
+
+                  {showDropdown && !isLoading && results.length > 0 && (
+                    <div ref={dropdownRef} className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-2xl border border-gray-100 bg-white" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.08)' }}>
+                      <div className="p-2">
+                        {results.map((course, index) => (
+                          <Link
+                            key={course.id}
+                            ref={(el) => { resultItemRefs.current[index] = el; }}
+                            to={`/courses/${course.slug}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              openCourse(course.slug);
+                            }}
+                            className={`flex cursor-pointer items-start gap-3 rounded-xl px-3 py-2.5 transition-colors ${index === highlightedIndex ? 'bg-brand/5' : 'hover:bg-gray-50'}`}
+                          >
+                            <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-brand/10">
+                              <i className="ri-book-open-line text-sm text-brand" />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="truncate text-sm font-medium text-dark">{highlightMatch(course.title)}</p>
+                              <p className="mt-0.5 text-xs text-dark/40">{course.category} - {course.duration} Weeks</p>
+                            </div>
+                            <i className="ri-arrow-right-up-line mt-1 flex-shrink-0 text-sm text-dark/20" />
+                          </Link>
+                        ))}
+                      </div>
+                      <div className="border-t border-gray-50 px-3 py-2.5">
+                        <button onClick={handleSearchClick} className="w-full py-1 text-center text-sm font-medium text-brand transition-colors hover:text-brand-dark">
+                          View all results for &quot;{searchQuery.trim()}&quot;
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {showDropdown && !isLoading && searchQuery.trim() && results.length === 0 && (
+                    <div className="absolute left-0 right-0 top-full z-50 mt-2 rounded-2xl border border-gray-100 bg-white p-6 text-center" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.08)' }}>
+                      <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
+                        <i className="ri-search-line text-xl text-dark/30" />
+                      </div>
+                      <p className="text-sm text-dark/60">No courses found for &quot;{searchQuery.trim()}&quot;</p>
+                      <p className="mt-1 text-xs text-dark/40">Try a different search term</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="max-w-2xl">
+                  <p className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-dark/45">Popular Searches</p>
+                  <div className="flex flex-wrap gap-2">
+                    {trendingSearches.map((item) => (
+                      <button key={item.label} onClick={() => handleTrendingClick(item.label)} className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white/95 px-3.5 py-2 text-sm text-dark/70 shadow-sm transition-all hover:border-brand/40 hover:bg-white hover:text-brand lg:bg-white">
+                        <i className={`${item.icon} text-xs`} />
+                        <span className="whitespace-nowrap">{item.label}</span>
+                      </button>
+                    ))}
+                    <Link to="/courses" className="inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-semibold text-brand transition-colors hover:text-brand-dark">
+                      Browse all <i className="ri-arrow-right-line text-xs" />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
+
+          <div className="relative w-full h-[320px] sm:h-[400px] md:h-[440px] lg:h-[500px] rounded-2xl sm:rounded-3xl lg:rounded-[32px] overflow-hidden bg-[#eef5ff] shadow-md hover:shadow-lg transition-shadow duration-300">
+            <img
+              src="/images/hero/proitkeys-hero-tech-banner.jpg"
+              alt="Technology learner working on cloud, AI, data analytics, and full stack skills"
+              width={1792}
+              height={1024}
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
+              className="absolute inset-0 h-full w-full object-cover object-[65%_center] md:object-right"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full border-t border-b border-gray-100 bg-white">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-4 lg:p-5">
+          {heroHighlights.map((item, index) => (
+            <div key={item.title} className={`flex items-center gap-4 p-3 ${index !== 0 ? 'border-t border-gray-100 md:border-l md:border-t-0' : ''}`}>
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand/10 text-brand">
+                <i className={`${item.icon} text-2xl`} />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-dark">{item.title}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-dark/60">{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="w-full bg-dark text-white py-6 sm:py-8">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-6 lg:px-10">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {heroStats.map((item, index) => (
+              <div key={item.label} className={`flex items-center gap-4 ${index !== 0 ? 'lg:border-l lg:border-white/15 lg:pl-7' : ''}`}>
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
+                  <i className={`${item.icon} text-2xl`} />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold leading-none">{item.value}</p>
+                  <p className="mt-1 text-xs text-white/70">{item.label}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

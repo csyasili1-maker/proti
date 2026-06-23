@@ -84,14 +84,12 @@ export default function BlogPage() {
 
         <section className="w-full py-16 md:py-24 bg-white">
           <div className="w-full px-6 lg:px-10 max-w-[1440px] mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-              <div>
-                <span className="text-sm font-semibold text-brand uppercase tracking-wider">SEO Career Articles</span>
-                <h2 className="text-3xl md:text-4xl font-bold font-display text-dark mt-2">
-                  Latest <span className="text-brand">IT Career Blogs</span>
-                </h2>
-              </div>
-              <p className="text-dark/55 text-sm md:text-base max-w-lg">
+            <div className="mb-10 max-w-3xl">
+              <span className="text-sm font-semibold text-brand uppercase tracking-wider">SEO Career Articles</span>
+              <h2 className="text-3xl md:text-4xl font-bold font-display text-dark mt-2">
+                Latest <span className="text-brand">IT Career Blogs</span>
+              </h2>
+              <p className="text-dark/55 text-sm md:text-base mt-4">
                 Six search-focused guides written for learners comparing online IT courses and career paths in the USA.
               </p>
             </div>

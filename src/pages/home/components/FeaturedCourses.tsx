@@ -10,14 +10,12 @@ export default function FeaturedCourses() {
     <section className="w-full py-16 md:py-24 bg-white">
       <div className="w-full px-6 lg:px-10 max-w-[1440px] mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-          <div>
-            <span className="text-sm font-semibold text-brand uppercase tracking-wider">Top Trending Courses</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-display text-dark mt-2">
-              Explore Our Most <em className="not-italic text-brand">In-Demand</em> Programs
-            </h2>
-          </div>
-          <p className="text-dark/60 text-sm md:text-base max-w-md">
+        <div className="mb-12 max-w-3xl">
+          <span className="text-sm font-semibold text-brand uppercase tracking-wider">Top Trending Courses</span>
+          <h2 className="text-3xl md:text-4xl font-bold font-display text-dark mt-2">
+            Explore Our Most <em className="not-italic text-brand">In-Demand</em> Programs
+          </h2>
+          <p className="text-dark/60 text-sm md:text-base mt-4">
             Industry-oriented training programs designed to make you job-ready with hands-on projects and expert mentorship.
           </p>
         </div>
