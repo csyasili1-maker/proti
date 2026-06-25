@@ -1,6 +1,7 @@
 import Navbar from '@/pages/home/components/Navbar';
 import Footer from '@/pages/home/components/Footer';
 import { Link } from 'react-router-dom';
+import { supportEmail } from '@/config/contact';
 
 export default function PrivacyPolicyPage() {
   return (
@@ -150,7 +151,7 @@ export default function PrivacyPolicyPage() {
                 If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
               </p>
               <ul className="list-none space-y-2 leading-relaxed">
-                <li><strong>Email:</strong> proitkeys@gmail.com</li>
+                <li><strong>Email:</strong> <a href={`mailto:${supportEmail}`} className="text-[#f15a24] hover:underline">{supportEmail}</a></li>
                 <li><strong>Phone (US):</strong> +1 (531) 395 4129</li>
                 <li><strong>Phone / WhatsApp:</strong> +91 94928 76779</li>
                 <li><strong>WhatsApp:</strong> +91 94928 76779</li>

@@ -1,4 +1,4 @@
-import { getWhatsAppUrl, indiaPhoneNumber, usPhoneNumber } from '@/config/contact';
+import { getWhatsAppUrl, indiaPhoneNumber, usPhoneNumber, supportEmail } from '@/config/contact';
 
 export default function ContactInfo() {
   return (
@@ -44,10 +44,10 @@ export default function ContactInfo() {
             <h3 className="text-lg font-bold font-display text-dark mb-2">Email Us</h3>
             <p className="text-dark/50 text-sm mb-3">Send us your questions</p>
             <a
-              href="mailto:proitkeys@gmail.com"
+              href={`mailto:${supportEmail}`}
               className="text-brand font-semibold text-base hover:text-brand-dark transition-colors whitespace-nowrap"
             >
-              proitkeys@gmail.com
+              {supportEmail}
             </a>
           </div>
 

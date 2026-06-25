@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { supportEmail } from '@/config/contact';
 
 const pageInfo: Record<string, { title: string; icon: string; description: string }> = {
   '/courses': {
@@ -25,7 +26,7 @@ const pageInfo: Record<string, { title: string; icon: string; description: strin
   '/contact': {
     title: 'Contact Us',
     icon: 'ri-customer-service-2-line',
-    description: 'Our comprehensive contact and support page is being finalized. In the meantime, reach us at proitkeys@gmail.com, +1 (531) 395 4129, or +91 94928 76779.',
+    description: `Our comprehensive contact and support page is being finalized. In the meantime, reach us at ${supportEmail}, +1 (531) 395 4129, or +91 94928 76779.`,
   },
 };
 
@@ -108,7 +109,7 @@ export default function ComingSoon() {
               Back to Home
             </Link>
             <a
-              href="mailto:proitkeys@gmail.com"
+              href={`mailto:${supportEmail}`}
               className="border border-gray-200 hover:border-brand bg-white text-dark/80 hover:text-brand px-8 py-3 rounded-full text-sm font-medium transition-all whitespace-nowrap w-full sm:w-auto"
             >
               <i className="ri-mail-line mr-2" />

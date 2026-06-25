@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import type { ChangeEvent, KeyboardEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import type { Course } from '@/mocks/coursesData';
-import { getWhatsAppUrl, indiaPhoneNumber, usPhoneNumber } from '@/config/contact';
+import { getWhatsAppUrl, indiaPhoneNumber, usPhoneNumber, supportEmail } from '@/config/contact';
 import { searchCourses } from '@/utils/courseSearch';
 
 export default function Navbar() {
@@ -67,8 +67,8 @@ export default function Navbar() {
       icon: 'ri-phone-line',
     },
     {
-      label: 'proitkeys@gmail.com',
-      href: 'mailto:proitkeys@gmail.com',
+      label: supportEmail,
+      href: `mailto:${supportEmail}`,
       icon: 'ri-mail-line',
     },
     {

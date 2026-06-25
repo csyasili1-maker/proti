@@ -1,6 +1,7 @@
 import Navbar from '@/pages/home/components/Navbar';
 import Footer from '@/pages/home/components/Footer';
 import { Link } from 'react-router-dom';
+import { supportEmail } from '@/config/contact';
 
 export default function TermsConditionsPage() {
   return (
@@ -83,7 +84,7 @@ export default function TermsConditionsPage() {
                 <li>Corporate training agreements are governed by the specific terms of the contract signed with the corporate client.</li>
               </ul>
               <p className="leading-relaxed mt-3">
-                To request a refund, please contact us at proitkeys@gmail.com with your enrollment details. Refunds, if approved, will be processed within 7-14 business days and credited to the original payment method.
+                To request a refund, please contact us at <a href={`mailto:${supportEmail}`} className="text-[#f15a24] hover:underline">{supportEmail}</a> with your enrollment details. Refunds, if approved, will be processed within 7-14 business days and credited to the original payment method.
               </p>
             </div>
 
@@ -169,7 +170,7 @@ export default function TermsConditionsPage() {
                 These Terms shall be governed by and construed in accordance with applicable laws in the United States, without regard to conflict of law principles. Any dispute arising out of or relating to these Terms or the Services shall be handled in the United States.
               </p>
               <p className="leading-relaxed mt-3">
-                Before initiating formal legal proceedings, you agree to first attempt to resolve any dispute informally by contacting us at proitkeys@gmail.com. We will make reasonable efforts to resolve the dispute within 30 days.
+                Before initiating formal legal proceedings, you agree to first attempt to resolve any dispute informally by contacting us at <a href={`mailto:${supportEmail}`} className="text-[#f15a24] hover:underline">{supportEmail}</a>. We will make reasonable efforts to resolve the dispute within 30 days.
               </p>
             </div>
 
@@ -188,7 +189,7 @@ export default function TermsConditionsPage() {
                 If you have any questions, concerns, or feedback regarding these Terms, please reach out:
               </p>
               <ul className="list-none space-y-2 leading-relaxed">
-                <li><strong>Email:</strong> proitkeys@gmail.com</li>
+                <li><strong>Email:</strong> <a href={`mailto:${supportEmail}`} className="text-[#f15a24] hover:underline">{supportEmail}</a></li>
                 <li><strong>Phone (US):</strong> +1 (531) 395 4129</li>
                 <li><strong>Phone / WhatsApp:</strong> +91 94928 76779</li>
                 <li><strong>WhatsApp:</strong> +91 94928 76779</li>

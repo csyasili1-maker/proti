@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { services } from '@/mocks/homeData';
-import { indiaPhoneNumber, usPhoneNumber } from '@/config/contact';
+import { indiaPhoneNumber, usPhoneNumber, supportEmail } from '@/config/contact';
 
 export default function EnquiryForm() {
   const [formData, setFormData] = useState({
@@ -87,7 +87,11 @@ export default function EnquiryForm() {
                 </div>
                 <div>
                   <p className="text-sm text-dark/50">Email</p>
-                  <p className="font-semibold text-dark text-sm">proitkeys@gmail.com</p>
+                  <p className="font-semibold text-dark text-sm">
+                    <a href={`mailto:${supportEmail}`} className="hover:text-brand transition-colors">
+                      {supportEmail}
+                    </a>
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-3">

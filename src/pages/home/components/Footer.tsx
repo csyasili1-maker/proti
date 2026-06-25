@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getWhatsAppUrl, indiaPhoneNumber, usPhoneNumber } from '@/config/contact';
+import { getWhatsAppUrl, indiaPhoneNumber, usPhoneNumber, supportEmail } from '@/config/contact';
 
 export default function Footer() {
   const footerLinks = {
@@ -65,11 +65,11 @@ export default function Footer() {
                 <span>WhatsApp / Call: {indiaPhoneNumber.display}</span>
               </a>
               <a
-                href="mailto:proitkeys@gmail.com"
+                href={`mailto:${supportEmail}`}
                 className="flex items-center gap-3 text-white/50 text-sm hover:text-brand transition-colors"
               >
                 <i className="ri-mail-line text-brand" />
-                <span>proitkeys@gmail.com</span>
+                <span>{supportEmail}</span>
               </a>
               <a
                 href="https://whatsapp.com/channel/0029VbCNshgEquiWToNeUV1f"
