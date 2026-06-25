@@ -2,8 +2,28 @@ import Navbar from '@/pages/home/components/Navbar';
 import Footer from '@/pages/home/components/Footer';
 import { Link } from 'react-router-dom';
 import { supportEmail } from '@/config/contact';
+import { useSeo } from '@/hooks/useSeo';
+import { useMemo } from 'react';
 
 export default function PrivacyPolicyPage() {
+  const schemas = useMemo(() => [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://proitkeys.com/privacy-policy/#webpage',
+      'name': 'Privacy Policy',
+      'description': 'Read the PROITKEYS Privacy Policy to understand how we collect, store, protect, and handle your personal and academic information.',
+      'url': 'https://proitkeys.com/privacy-policy'
+    }
+  ], []);
+
+  useSeo({
+    title: 'Privacy Policy',
+    description: 'Read the PROITKEYS Privacy Policy to understand how we collect, store, protect, and handle your personal and academic information.',
+    keywords: 'privacy policy, PROITKEYS privacy, data protection',
+    canonicalUrl: 'https://proitkeys.com/privacy-policy',
+    schemas
+  });
+
   return (
     <div className="w-full min-h-screen bg-white">
       <Navbar />

@@ -2,8 +2,28 @@ import Navbar from '@/pages/home/components/Navbar';
 import Footer from '@/pages/home/components/Footer';
 import { Link } from 'react-router-dom';
 import { supportEmail } from '@/config/contact';
+import { useSeo } from '@/hooks/useSeo';
+import { useMemo } from 'react';
 
 export default function TermsConditionsPage() {
+  const schemas = useMemo(() => [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://proitkeys.com/terms-conditions/#webpage',
+      'name': 'Terms & Conditions',
+      'description': 'Read the Terms and Conditions of website usage, course enrollments, refunds, and career placement services agreements with PROITKEYS.',
+      'url': 'https://proitkeys.com/terms-conditions'
+    }
+  ], []);
+
+  useSeo({
+    title: 'Terms and Conditions',
+    description: 'Read the Terms and Conditions of website usage, course enrollments, refunds, and career placement services agreements with PROITKEYS.',
+    keywords: 'terms and conditions, PROITKEYS terms, refund policy',
+    canonicalUrl: 'https://proitkeys.com/terms-conditions',
+    schemas
+  });
+
   return (
     <div className="w-full min-h-screen bg-white">
       <Navbar />
